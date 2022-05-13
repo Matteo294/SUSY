@@ -1,0 +1,103 @@
+\documentclass[10pt]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\title{Building a SUSY model II: using superfields}
+\subtitle{Seminar on Supersymmetry and its breaking}
+% \date{\today}
+\date{}
+\author{Matteo Zortea}
+\institute{Heidelberg Universit\"at, Department of Physics}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+
+\begin{document}
+
+\maketitle              
+
+\begin{frame}{Main points of the talk}
+\begin{itemize}
+    \item Apply the superspace formalism and show why it is useful to build SUSY theories
+    \vfill
+    \item Principles to construct SUSY lagrangians 
+    \vfill
+    \item SUSY gauge theories: QED and QCD
+    \vfill
+    \item SUSY predictions: particles, interaction, masses, ...
+\end{itemize}
+\end{frame}
+
+\begin{frame}{D and F terms of the superfields}
+Chiral superfields
+\begin{gather*}
+    \Phi(x, \theta, \bar\theta) = \phi(x) + i\bar\theta \bar\sigma^{\mu}\theta \partial_{\mu}\phi(x) + \frac{1}{4}\theta\theta\theta{\dagger}\bar\theta\partial_{\mu}\partial^{\mu}\phi(x) + \sqrt{2}\theta\psi(x)\\ 
+    -\frac{i}{\sqrt{2}}\theta\theta\bar\theta\bar\sigma^{\mu}\partial_{\mu}\psi(x) + \theta\theta F(x) \\
+    \Phi^* = blablabla
+\end{gather*}
+A priori $\Phi$ and $\Phi^*$ (hence the components) are independent. \\
+Vector superfields
+\begin{gather*}
+    V(x, \theta, \bar\theta) = long stuff
+\end{gather*}
+Note that
+\begin{equation*}
+    \delta_{\epsilon} F = \delta_{\epsilon} F' = \delta_{\epsilon} D = 0
+\end{equation*}
+$\Rightarrow$ Use F terms of chiral superfields and D terms of vector superfields to build SUSY invariant lagrangians!
+    
+\end{frame}
+
+\begin{frame}{Chiral and vector superfields from chiral superfields}
+Two ways to combine chiral superfields
+\begin{enumerate}
+    \item $\Phi^*\Phi \longrightarrow$ Forms a new vector field because $(\Phi^*\Phi)^* = \Phi\Phi^* = \Phi^*\Phi$ \\
+    
+    \item $\Phi \Phi \longrightarrow$ Forms a new chiral field because $\bar D_{\dot \alpha} \Phi \Phi = (\bar D_{\dot \alpha} \Phi) \Phi  + \Phi (\bar D_{\dot \alpha} \Phi) = 0$. \\
+    In general any analytic function of $\theta$ (or $\bar \theta$ ) would still be a chiral superfield. \\
+    
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Naive combination of the fields}
+Let us try, very naively, to take a product of the first type
+\begin{gather*}
+\Phi(x, \theta, \bar\theta) = \phi(x) + i\bar\theta \bar\sigma^{\mu}\theta \partial_{\mu}\phi(x) + \frac{1}{4}\theta\theta\bar\theta\bar\theta\partial_{\mu}\partial^{\mu}\phi(x) + \sqrt{2}\theta\psi(x)\\ 
+-\frac{i}{\sqrt{2}}\theta\theta\bar\theta\bar\sigma^{\mu}\partial_{\mu}\psi(x) + \theta\theta F(x) \\
+\Phi^*\Phi = \dots
+\end{gather*}
+and "select" the SUSY invariant component
+\begin{align*}
+    \left[\Phi^*\Phi\right]_D & = \int d^2\theta d^2\bar\theta \ \Phi^*(x, \theta, \bar\theta) \Phi(x, \theta, \bar\theta) \\
+    & =  -\partial^{\mu}\phi^*\partial_{\mu}\phi + i\psi^{\dagger}\bar\sigma^{\mu}\partial_{\mu}\psi + F^*F + \text{total derivative}
+\end{align*}
+Note how mentally easy it was to derive this lagrangian, and how the Grassman formalism allows us to choose the SUSY invariant component via simple integration.
+\end{frame}
+
+\begin{frame}{Full Wess-Zumino model}
+How can we introduce produts of the second type? \\
+Remeber that analytic functions of a chiral superfield is in turn a chiral superfield $\Rightarrow$ define a function via power series
+\begin{gather*}
+    W(\left\{\phi_i\right\}) \equiv a_i\phi_i + \frac{1}{2} m_{ij} \phi_i\phi_j + \frac{1}{3!} y_{ijk} \phi_i\phi_j\phi_k \\
+\end{gather*}
+\centerline{Higher order terms lead to non-renormalisable theories!}
+$\rightarrow$ "select" $F$ term $\Rightarrow$
+\end{frame}
+
+\begin{frame}{Frame Title}
+Qua ci va tutta la parte normale di derivazione di roba
+\end{frame}
+    
+\begin{frame}{Another point of view on what we have done}
+$\Omega$ has 8+8 particles content
+$\Phi, \Phi^+$ have 2 particles content each: a boson and a left (right) chiral fermion each, F is unphysical
+\end{frame}
+\end{document}
