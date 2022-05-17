@@ -3,26 +3,51 @@
 \usetheme[progressbar=frametitle]{metropolis}
 \usepackage{appendixnumberbeamer}
 
-\usepackage{booktabs}
-\usepackage[scale=2]{ccicons}
-
-\usepackage{pgfplots}
-\usepgfplotslibrary{dateplot}
-
-\usepackage{xspace}
-\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
-
-\title{Building a SUSY model II: using superfields}
+\title{Building SUSY models II: using superfields}
 \subtitle{Seminar on Supersymmetry and its breaking}
-% \date{\today}
-\date{}
 \author{Matteo Zortea}
-\institute{Heidelberg Universit\"at, Department of Physics}
-% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+\date{Universit\"at Heidelberg, \today}
+\institute{Coordinated by prof. Joerg J\"ackel}
+
+\makeatletter
+\setbeamertemplate{title page}{
+  \begin{minipage}[b][\paperheight]{\textwidth}
+    \centering  % <-- Center here
+    \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+    \vfill%
+    \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+    \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+    \usebeamertemplate*{title separator}
+    \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+    \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+    \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+    \vfill
+    \vspace*{1mm}
+  \end{minipage}
+}
+
+\setbeamertemplate{title}{
+%  \raggedright%  % <-- Comment here
+  \linespread{1.0}%
+  \inserttitle%
+  \par%
+  \vspace*{0.5em}
+}
+\setbeamertemplate{subtitle}{
+%  \raggedright%  % <-- Comment here
+  \insertsubtitle%
+  \par%
+  \vspace*{0.5em}
+}
+\makeatother
+
+
+
 
 \begin{document}
-
-\maketitle              
+\begin{frame}
+\titlepage
+\end{frame}
 
 \begin{frame}{Main points of the talk}
 \begin{itemize}
@@ -37,67 +62,218 @@
 \end{frame}
 
 \begin{frame}{D and F terms of the superfields}
-Chiral superfields
+\textbf{Chiral superfields} $\bar D_{\dot\alpha} \Phi = 0$ or $D_{\alpha}\Phi^* = 0$
 \begin{gather*}
     \Phi(x, \theta, \bar\theta) = \phi(x) + i\bar\theta \bar\sigma^{\mu}\theta \partial_{\mu}\phi(x) + \frac{1}{4}\theta\theta\theta{\dagger}\bar\theta\partial_{\mu}\partial^{\mu}\phi(x) + \sqrt{2}\theta\psi(x)\\ 
     -\frac{i}{\sqrt{2}}\theta\theta\bar\theta\bar\sigma^{\mu}\partial_{\mu}\psi(x) + \theta\theta F(x) \\
     \Phi^* = blablabla
 \end{gather*}
 A priori $\Phi$ and $\Phi^*$ (hence the components) are independent. \\
-Vector superfields
+\textbf{Vector superfields}
 \begin{gather*}
     V(x, \theta, \bar\theta) = long stuff
 \end{gather*}
-Note that
+Remember that
 \begin{equation*}
-    \delta_{\epsilon} F = \delta_{\epsilon} F' = \delta_{\epsilon} D = 0
+    \delta_{\epsilon} F, \delta_{\epsilon} F',\delta_{\epsilon} D
 \end{equation*}
+are total derivatives! \\
 $\Rightarrow$ Use F terms of chiral superfields and D terms of vector superfields to build SUSY invariant lagrangians!
-    
 \end{frame}
 
-\begin{frame}{Chiral and vector superfields from chiral superfields}
-Two ways to combine chiral superfields
-\begin{enumerate}
-    \item $\Phi^*\Phi \longrightarrow$ Forms a new vector field because $(\Phi^*\Phi)^* = \Phi\Phi^* = \Phi^*\Phi$ \\
-    
-    \item $\Phi \Phi \longrightarrow$ Forms a new chiral field because $\bar D_{\dot \alpha} \Phi \Phi = (\bar D_{\dot \alpha} \Phi) \Phi  + \Phi (\bar D_{\dot \alpha} \Phi) = 0$. \\
-    In general any analytic function of $\theta$ (or $\bar \theta$ ) would still be a chiral superfield. \\
-    
-\end{enumerate}
-\end{frame}
-
-\begin{frame}{Naive combination of the fields}
-Let us try, very naively, to take a product of the first type
+\begin{frame}{noname}
+\begin{equation*} 
+    \mathcal{L}[\Phi, V] = \left[V\right]_D + \left[\Phi\right]_F  + \left[\Phi^*\right]_F
+\end{equation*}
+How can we "pick" only the terms we need? $\rightarrow$ Grassman integration
 \begin{gather*}
-\Phi(x, \theta, \bar\theta) = \phi(x) + i\bar\theta \bar\sigma^{\mu}\theta \partial_{\mu}\phi(x) + \frac{1}{4}\theta\theta\bar\theta\bar\theta\partial_{\mu}\partial^{\mu}\phi(x) + \sqrt{2}\theta\psi(x)\\ 
--\frac{i}{\sqrt{2}}\theta\theta\bar\theta\bar\sigma^{\mu}\partial_{\mu}\psi(x) + \theta\theta F(x) \\
-\Phi^*\Phi = \dots
+    \left[V\right]_D = \int d^2\theta \ d^2\bar\theta V(\theta, \bar\theta) \\
+    \left[\Phi\right]_D = \int d^2\theta \ \Phi(\theta, \bar\theta)_{|_{\bar\theta = 0}}
 \end{gather*}
-and "select" the SUSY invariant component
-\begin{align*}
-    \left[\Phi^*\Phi\right]_D & = \int d^2\theta d^2\bar\theta \ \Phi^*(x, \theta, \bar\theta) \Phi(x, \theta, \bar\theta) \\
-    & =  -\partial^{\mu}\phi^*\partial_{\mu}\phi + i\psi^{\dagger}\bar\sigma^{\mu}\partial_{\mu}\psi + F^*F + \text{total derivative}
-\end{align*}
-Note how mentally easy it was to derive this lagrangian, and how the Grassman formalism allows us to choose the SUSY invariant component via simple integration.
+Thus, our lagrangian will be of the form
+\begin{equation*}
+    \mathcal{L}[\Phi, V] = 
+    \int d^2\theta \ d^2\bar\theta V(\theta, \bar\theta) + 
+    \int d^2\theta \ \Phi(\theta, \bar\theta)_{|_{\bar\theta = 0}} + 
+    \int d^2\bar\theta \ \Phi^*(\theta, \bar\theta)_{|_{\theta = 0}}
+\end{equation*}
+\end{frame}
+
+\begin{frame}{noname}
+    Let us focus for a moment on the first term \\
+    Our building blocks are the chiral superfields and a vector field can be obtained by taking the product $\Phi^*\Phi$
+    \begin{gather*}
+        \Phi(x, \theta, \bar\theta) = \phi(x) + i\bar\theta \bar\sigma^{\mu}\theta \partial_{\mu}\phi(x) + \frac{1}{4}\theta\theta\bar\theta\bar\theta\partial_{\mu}\partial^{\mu}\phi(x) + \sqrt{2}\theta\psi(x)\\ 
+        -\frac{i}{\sqrt{2}}\theta\theta\bar\theta\bar\sigma^{\mu}\partial_{\mu}\psi(x) + \theta\theta F(x) \\
+        \Phi^*\Phi = \dots
+    \end{gather*}
+    Now "select" the SUSY invariant component
+    \begin{align*}
+        \left[\Phi^*\Phi\right]_D & = \int d^2\theta d^2\bar\theta \ \Phi^*(x, \theta, \bar\theta) \Phi(x, \theta, \bar\theta) \\
+        & = \boxed{-\partial^{\mu}\phi^*\partial_{\mu}\phi + i\psi^{\dagger}\bar\sigma^{\mu}\partial_{\mu}\psi + F^*F} + \text{total derivative}
+    \end{align*}
+    \centerline{\bfseries $\rightarrow$ Free Wess-Zumino model!}
+\end{frame}
+
+\begin{frame}{noname}
+    Let us introduce again the F-terms and let us try to generalize a bit.
+    Remembering the definitions of chiral superfields 
+    \begin{equation*}
+        \bar D_{\dot\alpha} \Phi = 0 \qquad D_{\alpha} \Phi^* = 0
+    \end{equation*}
+        we note that any analytic function of chiral superfields is in turn a chiral superfield (power series expansion and product rule). \\
+        $\Rightarrow$ Write our chiral term of $N$ fields as 
+        \begin{equation*}
+            W(\{\Phi_k\}) = \sum_i^N M_i \Phi_i + \sum_{i,j}^N \frac{1}{2!} M_{ij} \Phi_{i}\Phi_j + \sum_{i,j,k}^N \frac{1}{3!} M_{ijk} \Phi_i \Phi_j \Phi_k
+        \end{equation*}
+        Higher order terms are non-renormalisable 
+    
 \end{frame}
 
 \begin{frame}{Full Wess-Zumino model}
-How can we introduce produts of the second type? \\
-Remeber that analytic functions of a chiral superfield is in turn a chiral superfield $\Rightarrow$ define a function via power series
 \begin{gather*}
-    W(\left\{\phi_i\right\}) \equiv a_i\phi_i + \frac{1}{2} m_{ij} \phi_i\phi_j + \frac{1}{3!} y_{ijk} \phi_i\phi_j\phi_k \\
+\mathcal{L}_{WZ}\left(\{\Phi_i\}, \{\Phi^*_i\}\right) = \mathcal{L}_{WZ,D} + \mathcal{L}_{WZ,F} = \\
+= \left[\Phi^{*i}\Phi^i\right]_D + \left[W(\{\Phi_i\})\right]_F +  \left[W^*(\{\Phi^*_i\})\right]_F = \\
+= \boxed{\int d^2\theta \ -\frac{1}{4}\overline{DD}\Phi^{*i}\Phi_i + \left[W(\{\Phi_i\})\right]_F + \int d^2\bar\theta \ \left[W^*(\{\Phi^*_i\})\right]_F}
 \end{gather*}
-\centerline{Higher order terms lead to non-renormalisable theories!}
-$\rightarrow$ "select" $F$ term $\Rightarrow$
-\end{frame}
-
-\begin{frame}{Frame Title}
-Qua ci va tutta la parte normale di derivazione di roba
+Equations of motion varying w.r.t. $\Phi_i$ and $\Phi_i^*$
+\begin{gather*}
+    0=-\frac{1}{4} \overline{D D} \Phi^{* i}+\frac{\delta W}{\delta \Phi_{i}} \\
+    0=-\frac{1}{4} D D \Phi_{i}+\frac{\delta W^{*}}{\delta \Phi^{* i}}
+\end{gather*}
 \end{frame}
     
-\begin{frame}{Another point of view on what we have done}
-$\Omega$ has 8+8 particles content
-$\Phi, \Phi^+$ have 2 particles content each: a boson and a left (right) chiral fermion each, F is unphysical
+\begin{frame}{Gauge theories}
+Let us introduce (abelian) gauge interactions. \\ 
+Example: U(1) global symmetry 
+\begin{equation*}
+    \Phi_i \rightarrow e^{iq_i\Lambda_i}\Phi_i
+\end{equation*}
+The kinetic part of the lagrangian is always invariant
+\begin{equation*}
+    \mathcal{L}_{K} = \mathcal{L}_{WZ,D} = \int d^2\theta d^2 \bar\theta \Phi^*\Phi = \int d^2\theta -\frac{1}{4} \overline{D D} \Phi^*\Phi
+\end{equation*}
+The interaction part 
+\begin{equation*}
+    \mathcal{L}_{int} = \mathcal{L}_{WZ,F} = \int d^2\theta \frac{1}{2} \sum_{ij} \phi_i \phi_j + \frac{1}{3!} \sum_{ijk} \phi_i \phi_j \phi_k + \text{complex. conj.}
+\end{equation*}
+requires
+\begin{equation*}
+    m_{ij} = 0 \qquad \text{or} \qquad y_{ijk} = 0
+\end{equation*}
+whenever
+\begin{equation*}
+    q_i + q_j \neq 0 \qquad \text{or} \qquad q_i + q_j + q_k \neq 0
+\end{equation*}
+\end{frame}
+
+\begin{frame}{Abelian gauge theories}
+Promote to a local gauge symmetry
+\begin{equation*}
+    \phi \rightarrow \phi' = \phi e^{i\Lambda(x)}
+\end{equation*}
+\begin{itemize}
+    \item  is now a supergauge field $\Lambda = \Lambda(x, \theta, \bar\theta)$
+    \item We need $\Lambda(x)$ to be a left-chiral superfield if we want $\Phi'$ to be a left-chiral superfield (chain rule). \\ 
+    \item Thus this causes a problem in the kinetic term because $\Lambda^*$ is a right-chiral superfield
+    hence obviously $\Phi'^*\Phi' \neq \Phi^*\Phi$
+    \item The problem is analogous to the kinetc term in "normal" when $\partial_u \phi^* \partial^\mu \phi$ was not gauge invariant
+    \item Solution: add a term that compensate the gauge for the non invariant terms (in normal QFT was the covariant derivative)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Abelian gauge theories}
+\begin{equation*}
+    \Phi^+\Phi \rightarrow \Phi^* e^{-i\Lambda^*(x)} e^{i\Lambda(x)} \Phi
+\end{equation*}
+$\Rightarrow$ need an object $A$ such that $A' = e^{i\Lambda*} A e^{-i\Lambda}$ and the 
+quantity $\Phi^*A\Phi*$ is then gauge invariant. \\
+Remember that a vector superfield $V$ transforms according to 
+\begin{equation*}
+    V \rightarrow V' = V + i{\Lambda* - \Lambda}
+\end{equation*}
+\centerline{$\Rightarrow \qquad A = e^V$ is what we need.} \\
+Now we are just left with finding the gauge-invariant strength field term (euivalent of $F_{\mu\nu}F^{\mu\nu}$)
+\end{frame}
+
+
+\begin{frame}{Abelian gauge theories}
+Let us start by defining the two chiral fields \\
+\begin{equation*}
+    \mathcal{W}_{\alpha}=-\frac{1}{4} \overline{D D} D_{\alpha} V, \quad \overline{\mathcal{W}}_{\dot{\alpha}} = -\frac{1}{4} D D \bar{D}_{\dot{\alpha}} V
+\end{equation*}
+where $V$ is a vector field. \\
+The gauge-invariant dynamical term (equivalent to $F_{\mu\nu} F^{\mu\nu}$) is 
+\begin{equation*}
+   [W]_F + [\bar W]_F = \int d^2\theta W_{\alpha} W^{\alpha} + \int d^2\bar\theta \bar W_{\dot\alpha} \bar W^{\dot\alpha}
+\end{equation*}
+The explicit derivation is quite long (it will be put in the report appendix) but we can make two checks to get more convinced
+\begin{itemize}
+    \item Check that it is indeed gauge invariant
+    \item Check that it contains the "normal" gauge strength field $F_{\mu\nu}F^{\mu\nu}$ after integrating out $\theta$ and $\bar\theta$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Abelian gauge theories}
+To see that it is gauge invariant:
+\begin{equation*}
+\begin{aligned}
+    \mathcal{W}_{\alpha} \rightarrow-\frac{1}{4} \overline{D D} D_{\alpha}\left[V+i\left(\Omega^{*}-\Omega\right)\right] &=\mathcal{W}_{\alpha}+\frac{i}{4} \overline{D D} D_{\alpha} \Omega \\
+    &=\mathcal{W}_{\alpha}-\frac{i}{4} \bar{D}^{\dot{\beta}}\left\{\bar{D}_{\dot{\beta}}, D_{\alpha}\right\} \Omega \\
+    &=\mathcal{W}_{\alpha}+\frac{1}{2} \sigma_{\alpha \dot{\beta}}^{\mu} \partial_{\mu} \bar{D}^{\dot{\beta}} \Omega \\
+    &=\mathcal{W}_{\alpha}
+\end{aligned}
+\end{equation*}
+\end{frame}
+
+\begin{frame}{Abelian gauge theories}
+Remember that in the Wess-Zumino gauge the field expansion takes the form 
+\begin{gather*}
+    V(y, \theta, \bar \theta) = \theta^{\dagger} \bar{\sigma}^{\mu} \theta A_{\mu}(y)+\theta^{\dagger} \theta^{\dagger} \theta \lambda(y)+\theta \theta \theta^{\dagger} \lambda^{\dagger}(y) + \\ 
+    \frac{1}{2} \theta \theta \theta \theta^{\dagger} \theta^{\dagger}\left[D(y)+i \theta_{\mu} A^{\mu}(y)\right]
+\end{gather*}
+Hence 
+\begin{equation*}
+    W = \dots
+\end{equation*}
+Finally 
+\begin{equation*}
+    \frac{1}{4}\left[\mathcal{WW}\right]_F + \frac{1}{4} \left[\overline{\mathcal{WW}}\right]_F = -\frac{1}{4} F_{\mu\nu} F^{\mu\nu} + i \lambda^{\dagger} \bar\sigma^{\mu} \partial_{\mu} \lambda + \frac{1}{2} D^2
+\end{equation*}
+We recovered the desired term $F_{\mu\nu}F^{\mu\nu}$, but what are the other two terms?
+\end{frame}
+
+\begin{frame}{Abelian gauge theories}
+The term 
+\begin{equation*}
+    i\lambda^* \bar\sigma^{\mu}\partial_{\mu} \lambda
+\end{equation*}
+is just the superpartner of the photon, the \emph{photino}! \\
+For the other term, we can show that it palys no physical role (as the F term in the chiral fields). To do this we need to spot all the $D$ dependence in our lagrangian. \\
+Remembering that up to now our lagrangian is 
+\begin{equation*}
+    \mathcal{L} = \frac{1}{4}\left[\mathcal{WW}\right]_F + \frac{1}{4} \left[\overline{\mathcal{WW}}\right]_F + \left[\Phi^* e^V \Phi\right]_D + [W(\Phi)]_F + [\bar W(\Phi^*)]_F
+\end{equation*}
+once can note that the only other dependence on D is in $\left[\Phi^* e^V \Phi \right]_D = \Phi^*\Phi D$.
+Hence the equation of motions for $D$ are
+\begin{equation*}
+    0 = \frac{\partial \mathcal{L}}{\partial D} = D + \Phi* \Phi 
+\end{equation*}
+\end{frame}
+
+\begin{frame}{Abelian gauge theories}
+    Putting all together we get the SUSY QED lagrangian 
+    \begin{gather*}
+        \mathcal{L} = \dots
+    \end{gather*}
+    To this we add another SUSY and supergauge invariant term $2[kV]_D = 2kD$ (e.o.m. is still algebraic)
+    This term is called \emph{Fayet-Iliopoulos} and it will play an important role in the spontaneous SUSY breaking (next talks)
+    \begin{equation*}
+        \boxed{\mathcal{L}_{SQED} = \dots}
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Non abelian gauge theories}
+    
 \end{frame}
 \end{document}
