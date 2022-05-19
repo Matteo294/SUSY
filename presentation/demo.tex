@@ -143,9 +143,9 @@ Equations of motion varying w.r.t. $\Phi_i$ and $\Phi_i^*$
 \end{gather*}
 \end{frame}
     
-\begin{frame}{Gauge theories}
+\begin{frame}{Abelian gauge theories}
 Let us introduce (abelian) gauge interactions. \\ 
-Example: U(1) global symmetry 
+Let us start with U(1) global symmetry 
 \begin{equation*}
     \Phi_i \rightarrow e^{iq_i\Lambda_i}\Phi_i
 \end{equation*}
@@ -170,15 +170,16 @@ whenever
 \begin{frame}{Abelian gauge theories}
 Promote to a local gauge symmetry
 \begin{equation*}
-    \phi \rightarrow \phi' = \phi e^{i\Lambda(x)}
+    \Lambda \to \Lambda(x, \theta, \bar\theta)
 \end{equation*}
 \begin{itemize}
-    \item  is now a supergauge field $\Lambda = \Lambda(x, \theta, \bar\theta)$
-    \item We need $\Lambda(x)$ to be a left-chiral superfield if we want $\Phi'$ to be a left-chiral superfield (chain rule). \\ 
+    \item Gauge parameter is now a supergauge field $\Lambda = \Lambda(x, \theta, \bar\theta)$
+    \item Promote derivatives to covariant derivatives $\partial_\mu \to D_\mu = \partial_\mu + ieA_{\mu}$
+    \item We need $\Lambda(x, \theta, \bar\theta)$ to be a left-chiral superfield if we want $\Phi'$ to be a left-chiral superfield (chain rule). \\ 
     \item Thus this causes a problem in the kinetic term because $\Lambda^*$ is a right-chiral superfield
     hence obviously $\Phi'^*\Phi' \neq \Phi^*\Phi$
     \item The problem is analogous to the kinetc term in "normal" when $\partial_u \phi^* \partial^\mu \phi$ was not gauge invariant
-    \item Solution: add a term that compensate the gauge for the non invariant terms (in normal QFT was the covariant derivative)
+    \item Solution: add a term that compensate the gauge for the non invariant terms
 \end{itemize}
 \end{frame}
 
@@ -262,18 +263,40 @@ Hence the equation of motions for $D$ are
 \end{frame}
 
 \begin{frame}{Abelian gauge theories}
-    Putting all together we get the SUSY QED lagrangian 
-    \begin{gather*}
-        \mathcal{L} = \dots
-    \end{gather*}
-    To this we add another SUSY and supergauge invariant term $2[kV]_D = 2kD$ (e.o.m. is still algebraic)
-    This term is called \emph{Fayet-Iliopoulos} and it will play an important role in the spontaneous SUSY breaking (next talks)
-    \begin{equation*}
-        \boxed{\mathcal{L}_{SQED} = \dots}
-    \end{equation*}
+Putting all together we get the SUSY QED lagrangian 
+\begin{gather*}
+    \mathcal{L} = \dots
+\end{gather*}
+To this we add another SUSY and supergauge invariant term $2[kV]_D = 2kD$ (e.o.m. is still algebraic)
+This term is called \emph{Fayet-Iliopoulos} and it will play an important role in the spontaneous SUSY breaking (next talks)
+\begin{equation*}
+    \boxed{\mathcal{L}_{SQED} = \dots}
+\end{equation*}
 \end{frame}
 
 \begin{frame}{Non abelian gauge theories}
-    
+Now extend to generic gauge theories, in particular SU(n). In spacetime:
+\begin{itemize}
+    \item $n^2-1$ generators $T_{1}, \dots T_{n^2-1}$ (gauge fields)
+    \item for $n=3$ we have 8 fields (gluons)
+    \item $\left[T_a, T_b\right] = i \, f_{abc} \, T_c$ where $f_{abc}$ are called structure constants
+    \item $U \in SU(n) \Rightarrow U = \exp(i g A^a T^a)$
+    \item Covariant derivatives  in spacetime are $D_\mu = \partial_\mu - ig A_\mu = \partial_\mu - igA_u^a T^a$
+\end{itemize}
+In spacetime, guided by the fact that for $U(1)$ we had $$F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu = \frac{i}{e} \, [D_\mu, D_\nu]$$
+we \emph{define} our field strength tensor for a general gauge symmetry via 
+\begin{equation*} 
+    F_{\mu \nu} \equiv \frac{i}{g} \, [D_\mu, D_\nu] = \partial_\mu A_\nu - \partial_\nu A_\mu -ig \, [A_\mu, A_\nu]
+\end{equation*}
+$\Rightarrow$ how to extend to superspace?
 \end{frame}
+
+\begin{frame}{Non abelian gauge theories}
+Our starting point is again a term like 
+\begin{equation*}
+    \Phi^* e^A \Phi
+\end{equation*}
+$\rightarrow$ we need to figure out how to set $A$
+\end{frame}
+
 \end{document}
