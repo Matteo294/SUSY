@@ -6,8 +6,8 @@
 \title{Building SUSY models II: using superfields}
 \subtitle{Seminar on Supersymmetry and its breaking}
 \author{Matteo Zortea}
-\date{Universit\"at Heidelberg, \today}
-\institute{Coordinated by prof. Joerg J\"ackel}
+\date{Universit\"at Heidelberg, $27^{th}$ May 2022}
+\institute{Coordinated by prof. J\"org J\"ackel}
 
 \makeatletter
 \setbeamertemplate{title page}{
@@ -52,95 +52,133 @@
 \begin{frame}{Main points of the talk}
 \begin{itemize}
     \item Apply the superspace formalism and show why it is useful to build SUSY theories
-    \vfill
     \item Principles to construct SUSY lagrangians 
-    \vfill
     \item SUSY gauge theories: QED and QCD
-    \vfill
     \item SUSY predictions: particles, interaction, masses, ...
+    \item N=1 nonrenormalization theorem
 \end{itemize}
 \end{frame}
 
-\begin{frame}{D and F terms of the superfields}
-\textbf{Chiral superfields} $\bar D_{\dot\alpha} \Phi = 0$ or $D_{\alpha}\Phi^* = 0$
+\begin{frame}{How to build SUSY invariant lagrangians}
+    We want our theory to be SUSY invariant, that is
+    \begin{equation*}
+        \left(\epsilon \hat Q + \epsilon^\dagger \hat Q\right) S = \left(\epsilon \hat Q + \epsilon^\dagger \hat Q\right) \int dx^\mu \mathcal{L} = 0
+    \end{equation*}
+    We know that this condition is met if, under a given transformation
+    \begin{equation*}
+        \mathcal{L} \to \mathcal{L} + \partial_\mu f
+    \end{equation*}
+    Hence our goal is to build a lagrangin which transforms in this way, using \textbf{Chiral} ($\bar D_{\dot\alpha} \Phi = 0$ or $D_{\alpha}\Phi^* = 0$) and \textbf{Vector} ($V=V^*$) superfields
 \begin{gather*}
-    \Phi(x, \theta, \bar\theta) = \phi(x) + i\bar\theta \bar\sigma^{\mu}\theta \partial_{\mu}\phi(x) + \frac{1}{4}\theta\theta\theta{\dagger}\bar\theta\partial_{\mu}\partial^{\mu}\phi(x) + \sqrt{2}\theta\psi(x)\\ 
-    -\frac{i}{\sqrt{2}}\theta\theta\bar\theta\bar\sigma^{\mu}\partial_{\mu}\psi(x) + \theta\theta F(x) \\
-    \Phi^* = blablabla
+    \Phi(x, \theta, \bar\theta) = \phi(x) + i\bar\theta \bar\sigma^{\mu}\theta \partial_{\mu}\phi(x) + \frac{1}{4}\theta\theta\bar\theta\bar\theta\partial_{\mu}\partial^{\mu}\phi(x) + \sqrt{2}\theta\psi(x) + \\ 
+    -\frac{i}{\sqrt{2}}\theta\theta\bar\theta\bar\sigma^{\mu}\partial_{\mu}\psi(x) + \theta\theta \underbrace{F(x)}_{\text{F term}} \\
+    V\left(x, \theta, \bar\theta\right) = a+\theta \xi+\bar\theta \xi^* +\theta \theta b+\bar\theta \bar\theta b^{*}+\bar\theta \bar{\sigma}^{\mu} \theta A_{\mu}+ \\ 
+    + \bar\theta \bar\theta \theta\left(\lambda-\frac{i}{2} \sigma^{\mu} \partial_{\mu} \xi^*\right)
+    +\theta \theta \bar\theta\left(\lambda^*-\frac{i}{2} \sigma^{\mu} \partial_{\mu} \xi\right)+\theta \theta \bar\theta \bar\theta \underbrace{\left(\frac{1}{2} D+\frac{1}{4} \partial_{\mu} \partial^{\mu} a\right)}_{\text{D term}}
 \end{gather*}
-A priori $\Phi$ and $\Phi^*$ (hence the components) are independent. \\
-\textbf{Vector superfields}
-\begin{gather*}
-    V(x, \theta, \bar\theta) = long stuff
-\end{gather*}
-Remember that
-\begin{equation*}
-    \delta_{\epsilon} F, \delta_{\epsilon} F',\delta_{\epsilon} D
-\end{equation*}
-are total derivatives! \\
-$\Rightarrow$ Use F terms of chiral superfields and D terms of vector superfields to build SUSY invariant lagrangians!
 \end{frame}
 
-\begin{frame}{noname}
+\begin{frame}{How to build SUSY invariant lagrangians}
+General superfield expansion
+\begin{equation*}
+    S\left(x, \theta, \bar\theta\right)=a+\theta \xi+\bar\theta \chi^{\dagger}+\theta \theta b+\bar\theta \bar\theta c+\bar\theta \bar{\sigma}^{\mu} \theta v_{\mu}+\bar\theta \bar\theta \theta \eta+\theta \theta \bar\theta \zeta^{\dagger}+\theta \theta \bar\theta \bar\theta d
+\end{equation*}
+For the chiral field $\Phi(x, \theta \bar\theta)$ components one has the following transformation properties
+\begin{gather*}
+    \delta\phi = \sqrt{2} \zeta \psi \\
+    \delta\psi_\alpha = -\sqrt{2}F\zeta_{\alpha} - i \sqrt{2} \sigma^{\mu}_{\alpha \dot\alpha} \bar\zeta^{\dot \alpha} \partial_\mu \phi \\
+    \boxed{\delta_{\epsilon} F = -i\epsilon^{\dagger} \bar\sigma^\mu \partial_\mu \psi}
+\end{gather*}
+For the vector field $V(x, \theta, \bar\theta)$ components one has
+\begin{gather*}
+        \sqrt{2} \delta_{\epsilon} a =\epsilon \xi+\epsilon^{\dagger} \xi^{\dagger} \qquad 
+        \sqrt{2} \delta_{\epsilon} \xi_{\alpha} =2 \epsilon_{\alpha} b-\left(\sigma^{\mu} \epsilon^{\dagger}\right)_{\alpha}\left(A_{\mu}+i \partial_{\mu} a\right) \\
+        \sqrt{2} \delta_{\epsilon} b =\epsilon^{\dagger} \lambda^{\dagger}-i \epsilon^{\dagger} \sigma^{\mu} \partial_{\mu} \xi \qquad
+        \sqrt{2} \delta_{\epsilon} A^{\mu} =i \epsilon \partial^{\mu} \xi-i \epsilon^{\dagger} \partial^{\mu} \xi^{\dagger}+\epsilon \sigma^{\mu} \lambda^{\dagger}-\epsilon^{\dagger} \bar{\sigma}^{\mu} \lambda \\
+        \sqrt{2} \delta_{\epsilon} \lambda_{\alpha} =\epsilon_{a} D+\frac{i}{2}\left(\sigma^{\mu} \sigma^{\nu} \epsilon\right)_{\alpha}\left(\partial_{\mu} A_{\nu}-\partial_{\nu} A_{\mu}\right) \\
+        \boxed{\sqrt{2} \delta_{\epsilon} D =-i \epsilon \sigma^{\mu} \partial_{\mu} \lambda^{\dagger}-i \epsilon^{\dagger} \bar{\sigma}^{\mu} \partial_{\mu} \lambda}
+\end{gather*}
+\end{frame}
+
+\begin{frame}{How to build SUSY invariant lagrangians}
+Idea $\rightarrow$ "select" the components of the fields that transforms as total derivatives
 \begin{equation*} 
-    \mathcal{L}[\Phi, V] = \left[V\right]_D + \left[\Phi\right]_F  + \left[\Phi^*\right]_F
+    \mathcal{L}[\Phi, V] = \alpha \, \left[V\right]_D + \beta \, \left[\Phi\right]_F  + \gamma \, \left[\Phi^*\right]_F
 \end{equation*}
 How can we "pick" only the terms we need? $\rightarrow$ Grassman integration
 \begin{gather*}
-    \left[V\right]_D = \int d^2\theta \ d^2\bar\theta V(\theta, \bar\theta) \\
-    \left[\Phi\right]_D = \int d^2\theta \ \Phi(\theta, \bar\theta)_{|_{\bar\theta = 0}}
+    \int d^2\theta \ \theta^\alpha \, f(x, \bar\theta) = f(x, \bar\theta) \, \delta_{\alpha, 2} \\
+    \int d^2\theta d^2\bar\theta  \ \bar\theta^\alpha \theta^\beta f(x) = f(x) \, \delta_{\alpha, 2} \, \delta_{\beta, 2}
 \end{gather*}
-Thus, our lagrangian will be of the form
-\begin{equation*}
-    \mathcal{L}[\Phi, V] = 
-    \int d^2\theta \ d^2\bar\theta V(\theta, \bar\theta) + 
-    \int d^2\theta \ \Phi(\theta, \bar\theta)_{|_{\bar\theta = 0}} + 
-    \int d^2\bar\theta \ \Phi^*(\theta, \bar\theta)_{|_{\theta = 0}}
-\end{equation*}
+Hence we are interested in
+\begin{gather*}
+    \left[\Phi\right]_F = \int d^2\theta \Phi + \text{total derivative} \\
+    \left[V\right]_D = \int d^2\theta d^2\bar\theta V(x, \theta, \bar\theta) + \text{total derivative}
+\end{gather*}
 \end{frame}
 
-\begin{frame}{noname}
-    Let us focus for a moment on the first term \\
-    Our building blocks are the chiral superfields and a vector field can be obtained by taking the product $\Phi^*\Phi$
+\begin{frame}{How to build SUSY invariant lagrangians}
+    Let us focus for a moment on the D term.\\
+    A vector field can be obtained from 2 chiral superfields by taking the product $\Phi^*\Phi$
     \begin{gather*}
         \Phi(x, \theta, \bar\theta) = \phi(x) + i\bar\theta \bar\sigma^{\mu}\theta \partial_{\mu}\phi(x) + \frac{1}{4}\theta\theta\bar\theta\bar\theta\partial_{\mu}\partial^{\mu}\phi(x) + \sqrt{2}\theta\psi(x)\\ 
         -\frac{i}{\sqrt{2}}\theta\theta\bar\theta\bar\sigma^{\mu}\partial_{\mu}\psi(x) + \theta\theta F(x) \\
-        \Phi^*\Phi = \dots
+            \Phi^{* i} \Phi_{j}= \phi^{* i} \phi_{j}+\sqrt{2} \theta \psi_{j} \phi^{* i}+\sqrt{2} \theta^{\dagger} \psi^{\dagger i} \phi_{j}+\theta \theta \phi^{* i} F_{j}+\theta^{\dagger} \theta^{\dagger} \phi_{j} F^{* i} \\
+            +\theta^{\dagger} \bar{\sigma}^{\mu} \theta\left[i \phi^{* i} \partial_{\mu} \phi_{j}-i \phi_{j} \partial_{\mu} \phi^{* i}-\psi^{\dagger i} \sigma_{\mu} \psi_{j}\right] \\
+                +\frac{i}{\sqrt{2}} \theta \theta \theta^{\dagger} \bar{\sigma}^{\mu}\left(\psi_{j} \partial_{\mu} \phi^{* i}-\partial_{\mu} \psi_{j} \phi^{* i}\right)+\sqrt{2} \theta \theta \theta^{\dagger} \psi^{\dagger i} F_{j} \\
+                +\frac{i}{\sqrt{2}} \theta^{\dagger} \theta^{\dagger} \theta \sigma^{\mu}\left(\psi^{\dagger i} \partial_{\mu} \phi_{j}-\partial_{\mu} \psi^{\dagger i} \phi_{j}\right)+\sqrt{2} \theta^{\dagger} \theta^{\dagger} \theta \psi_{j} F^{* i} \\
+                +\theta \theta \theta^{\dagger} \theta^{\dagger}\left[F^{* i} F_{j}-\frac{1}{2} \partial^{\mu} \phi^{* i} \partial_{\mu} \phi_{j}+\frac{1}{4} \phi^{* i} \partial^{\mu} \partial_{\mu} \phi_{j}+\frac{1}{4} \phi_{j} \partial^{\mu} \partial_{\mu} \phi^{* i}\right. \\
+                \left.+\frac{i}{2} \psi^{\dagger i} \bar{\sigma}^{\mu} \partial_{\mu} \psi_{j}+\frac{i}{2} \psi_{j} \sigma^{\mu} \partial_{\mu} \psi^{\dagger i}\right]
     \end{gather*}
-    Now "select" the SUSY invariant component
-    \begin{align*}
-        \left[\Phi^*\Phi\right]_D & = \int d^2\theta d^2\bar\theta \ \Phi^*(x, \theta, \bar\theta) \Phi(x, \theta, \bar\theta) \\
-        & = \boxed{-\partial^{\mu}\phi^*\partial_{\mu}\phi + i\psi^{\dagger}\bar\sigma^{\mu}\partial_{\mu}\psi + F^*F} + \text{total derivative}
-    \end{align*}
+\end{frame}
+\begin{frame}{How to build SUSY invariant lagrangians}
+    Now "select" the SUSY invariant component (D component)
+    \begin{gather*}
+        \left[\Phi^*\Phi\right]_D = \int d^2\theta d^2\bar\theta \ \Phi^*(x, \theta, \bar\theta) \Phi(x, \theta, \bar\theta) \\
+        \left[F^* F - \frac{1}{2} \partial^{\mu} \phi^{* i} \partial_{\mu} \phi_{j}+\frac{1}{4} \phi^{* i} \partial^{\mu} \partial_{\mu} \phi_{j}+\frac{1}{4} \phi_{j} \partial^{\mu} \partial_{\mu} \phi^{* i}\right. \\
+                \left.+\frac{i}{2} \psi^{\dagger i} \bar{\sigma}^{\mu} \partial_{\mu} \psi_{j}+\frac{i}{2} \psi_{j} \sigma^{\mu} \partial_{\mu} \psi^{\dagger i}\right] = \\
+        = -\partial^{\mu}\phi^*\partial_{\mu}\phi + i\psi^{\dagger}\bar\sigma^{\mu}\partial_{\mu}\psi + F^*F + \text{total derivative}
+    \end{gather*}
+    Hence 
+    \begin{equation*}
+        \boxed{S = \int dx^{\mu} \mathcal{L} = \int dx^{\mu} -\partial^{\mu}\phi^*\partial_{\mu}\phi + i\psi^{\dagger}\bar\sigma^{\mu}\partial_{\mu}\psi + F^*F}
+    \end{equation*}
     \centerline{\bfseries $\rightarrow$ Free Wess-Zumino model!}
 \end{frame}
 
-\begin{frame}{noname}
-    Let us introduce again the F-terms and let us try to generalize a bit.
-    Remembering the definitions of chiral superfields 
+\begin{frame}{How to build SUSY invariant lagrangians}
+    In order to add SUSY invariant interactions, let us recall the definitions of chiral superfields 
     \begin{equation*}
         \bar D_{\dot\alpha} \Phi = 0 \qquad D_{\alpha} \Phi^* = 0
     \end{equation*}
-        we note that any analytic function of chiral superfields is in turn a chiral superfield (power series expansion and product rule). \\
+        Noote that any analytic function of chiral superfields is in turn a chiral superfield (power series expansion and product rule). \\
         $\Rightarrow$ Write our chiral term of $N$ fields as 
         \begin{equation*}
-            W(\{\Phi_k\}) = \sum_i^N M_i \Phi_i + \sum_{i,j}^N \frac{1}{2!} M_{ij} \Phi_{i}\Phi_j + \sum_{i,j,k}^N \frac{1}{3!} M_{ijk} \Phi_i \Phi_j \Phi_k
+            W(\{\Phi_k\}) = \sum_i^N M_i \Phi_i + \sum_{i,j}^N \frac{1}{2!} M_{ij} \Phi_{i}\Phi_j + \sum_{i,j,k}^N \frac{1}{3!} y_{ijk} \Phi_i \Phi_j \Phi_k
         \end{equation*}
-        Higher order terms are non-renormalisable 
+        Higher order terms are non-renormalisable. \\
+        Reality of the action requires us to take $W + W^*$
     
 \end{frame}
 
-\begin{frame}{Full Wess-Zumino model}
+\begin{frame}{How to buld SUSY invariant lagrangians}
 \begin{gather*}
 \mathcal{L}_{WZ}\left(\{\Phi_i\}, \{\Phi^*_i\}\right) = \mathcal{L}_{WZ,D} + \mathcal{L}_{WZ,F} = \\
 = \left[\Phi^{*i}\Phi^i\right]_D + \left[W(\{\Phi_i\})\right]_F +  \left[W^*(\{\Phi^*_i\})\right]_F = \\
-= \boxed{\int d^2\theta \ -\frac{1}{4}\overline{DD}\Phi^{*i}\Phi_i + \left[W(\{\Phi_i\})\right]_F + \int d^2\bar\theta \ \left[W^*(\{\Phi^*_i\})\right]_F}
+= \boxed{\int d^2\theta \ \left(-\frac{1}{4}\overline{DD}\Phi^{*i}\Phi_i + W(\{\Phi_i\})\right) + \int d^2\bar\theta \ W^*(\{\Phi^*_i\})}
 \end{gather*}
 Equations of motion varying w.r.t. $\Phi_i$ and $\Phi_i^*$
 \begin{gather*}
     0=-\frac{1}{4} \overline{D D} \Phi^{* i}+\frac{\delta W}{\delta \Phi_{i}} \\
     0=-\frac{1}{4} D D \Phi_{i}+\frac{\delta W^{*}}{\delta \Phi^{* i}}
 \end{gather*}
+\end{frame}
+
+\begin{frame}{Wess-Zumino model}
+    We are now interested in studying better the components of $\Phi$, hence let us focus in the case $i=j$
+    \begin{equation*}
+        \mathcal{L}(\Phi, \Phi^*) = \dots
+    \end{equation*}
 \end{frame}
     
 \begin{frame}{Abelian gauge theories}
@@ -230,8 +268,8 @@ To see that it is gauge invariant:
 \begin{frame}{Abelian gauge theories}
 Remember that in the Wess-Zumino gauge the field expansion takes the form 
 \begin{gather*}
-    V(y, \theta, \bar \theta) = \theta^{\dagger} \bar{\sigma}^{\mu} \theta A_{\mu}(y)+\theta^{\dagger} \theta^{\dagger} \theta \lambda(y)+\theta \theta \theta^{\dagger} \lambda^{\dagger}(y) + \\ 
-    \frac{1}{2} \theta \theta \theta \theta^{\dagger} \theta^{\dagger}\left[D(y)+i \theta_{\mu} A^{\mu}(y)\right]
+    V(y, \theta, \bar \theta) = \bar\theta \bar{\sigma}^{\mu} \theta A_{\mu}(y)+\bar\theta \bar\theta \theta \lambda(y)+\theta \theta \bar\theta \lambda^{\dagger}(y) + \\ 
+    \frac{1}{2} \theta \theta \theta \bar\theta \bar\theta\left[D(y)+i \theta_{\mu} A^{\mu}(y)\right]
 \end{gather*}
 Hence 
 \begin{equation*}
@@ -250,7 +288,7 @@ The term
     i\lambda^* \bar\sigma^{\mu}\partial_{\mu} \lambda
 \end{equation*}
 is just the superpartner of the photon, the \emph{photino}! \\
-For the other term, we can show that it palys no physical role (as the F term in the chiral fields). To do this we need to spot all the $D$ dependence in our lagrangian. \\
+For the other term, we can show that it plays no physical role (as the F term in the chiral fields). To do this we need to spot all the $D$ dependence in our lagrangian. \\
 Remembering that up to now our lagrangian is 
 \begin{equation*}
     \mathcal{L} = \frac{1}{4}\left[\mathcal{WW}\right]_F + \frac{1}{4} \left[\overline{\mathcal{WW}}\right]_F + \left[\Phi^* e^V \Phi\right]_D + [W(\Phi)]_F + [\bar W(\Phi^*)]_F
@@ -267,7 +305,7 @@ Putting all together we get the SUSY QED lagrangian
 \begin{gather*}
     \mathcal{L} = \dots
 \end{gather*}
-To this we add another SUSY and supergauge invariant term $2[kV]_D = 2kD$ (e.o.m. is still algebraic)
+To this we add another SUSY and supergauge invariant term $2[kV]_D = 2kD$ (e.o.m. is still algebraic). 
 This term is called \emph{Fayet-Iliopoulos} and it will play an important role in the spontaneous SUSY breaking (next talks)
 \begin{equation*}
     \boxed{\mathcal{L}_{SQED} = \dots}
