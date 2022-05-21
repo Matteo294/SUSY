@@ -2,6 +2,7 @@
 
 \usetheme[progressbar=frametitle]{metropolis}
 \usepackage{appendixnumberbeamer}
+\usepackage[compat=1.0.0]{tikz-feynman}
 
 \title{Building SUSY models II: using superfields}
 \subtitle{Seminar on Supersymmetry and its breaking}
@@ -154,7 +155,7 @@ Hence we are interested in
         Noote that any analytic function of chiral superfields is in turn a chiral superfield (power series expansion and product rule). \\
         $\Rightarrow$ Write our chiral term of $N$ fields as 
         \begin{equation*}
-            W(\{\Phi_k\}) = \sum_i^N M_i \Phi_i + \sum_{i,j}^N \frac{1}{2!} M_{ij} \Phi_{i}\Phi_j + \sum_{i,j,k}^N \frac{1}{3!} y_{ijk} \Phi_i \Phi_j \Phi_k
+            W(\{\Phi_k\}) = \sum_i^N a_i \Phi_i + \sum_{i,j}^N \frac{1}{2!} m_{ij} \Phi_{i}\Phi_j + \sum_{i,j,k}^N \frac{1}{3!} y_{ijk} \Phi_i \Phi_j \Phi_k
         \end{equation*}
         Higher order terms are non-renormalisable. \\
         Reality of the action requires us to take $W + W^*$
@@ -175,10 +176,65 @@ Equations of motion varying w.r.t. $\Phi_i$ and $\Phi_i^*$
 \end{frame}
 
 \begin{frame}{Wess-Zumino model}
-    We are now interested in studying better the components of $\Phi$, hence let us focus in the case $i=j$
+    We are now interested in studying better the components of $\Phi$, hence let us focus on the case $i=j$ with $a_{i} = a, m_{ij}=m, y_{ijk}=y$ and the superpotential
     \begin{equation*}
-        \mathcal{L}(\Phi, \Phi^*) = \dots
+        W(\Phi) = \frac{1}{2} m \Phi\Phi + \frac{1}{3!} \Phi \Phi \Phi
     \end{equation*}
+    where we dropped the linear term
+    \begin{gather*}
+        \mathcal{L}(\Phi, \Phi^*) = \mathcal{L}_{WZ, D} + \mathcal{L}_{WZ, F} = \\ 
+        = F^{\dagger} F+\left(\partial_{\mu} \phi\right)\left(\partial^{\mu} \phi\right)^{\dagger}+\frac{i}{2} \psi \sigma^{\mu}\left(\partial_{\mu} \bar{\psi}\right)-\frac{i}{2}\left(\partial_{\mu} \psi\right) \sigma^{\mu} \tilde{\psi} + \\
+            -m \phi F-\frac{m}{2}(\psi \psi)-\frac{y}{2} \phi \phi F-\frac{y}{2} \phi(\psi \psi)+\text { h.c. }
+    \end{gather*}
+    E.o.m. for $F$ (analogous for $F^*$) is
+    \begin{gather*}
+        0=\partial_{\mu} \frac{\partial \mathcal{L}}{\partial\left(\partial_{\mu} F\right)}-\frac{\partial \mathcal{L}}{\partial F}=-\frac{\partial \mathcal{L}}{\partial F}=-F^{\dagger}+m \phi+\frac{y}{2} \phi \phi
+    \end{gather*}
+    $\Rightarrow$ algebraic equation $\Rightarrow$ $F,F^*$ are unphysical. 
+\end{frame}
+
+\begin{frame}{Wess-Zumino model}
+    \begin{equation*}
+        F^* = m\phi + \frac{y}{2}\phi\phi \qquad F = m \phi^* + \frac{y}{2} \phi \phi
+    \end{equation*}
+    One can rewrite the terms containing $F, F^*$ as  
+    \begin{equation*}
+        F^{\dagger} F-\left(m \phi F+\frac{y}{2} \phi \phi F+h c\right)=-\left|m \phi+\frac{y}{2} \phi \phi\right|^{2}=-\left|\frac{\partial W(\phi)}{\partial \phi}\right|^{2}
+    \end{equation*}
+    that is, the superpotential evaluated at the scalar field $\phi$!
+    The lagrangian then becomes
+    \begin{equation*}
+        \begin{aligned}
+            \mathcal{L}_{\mathrm{Wz}} &=\left(\partial_{\mu} \varphi\right)\left(\partial^{\mu} \varphi\right)^{\dagger}+\frac{i}{2} \psi \sigma^{\mu}\left(\partial_{\mu} \bar{\psi}\right)-\frac{i}{2}\left(\partial_{\mu} \psi\right) \sigma^{\mu} \bar{\psi} \\
+            &-|M|^{2} \varphi \varphi^{\dagger}-\frac{|y|^{2}}{4} \varphi \varphi \varphi^{\dagger} \varphi^{\dagger}-\left(\frac{M}{2} \psi \psi+\frac{M \cdot y}{2} \varphi \varphi \varphi^{\dagger}+\frac{y}{2} \varphi \psi \psi+\text { h.c. }\right)
+            \end{aligned}
+    \end{equation*}
+    and one can prove that in the case of $N$ fields it can be written as 
+    \begin{equation*}
+        \begin{aligned}
+            \mathcal{L}_{W Z} &=\left(\partial_{\mu} \varphi_{i}\right)\left(\partial^{\mu} \varphi_{i}\right)^{\dagger}+\frac{i}{2} \psi_{i} \sigma^{\mu}\left(\partial_{\mu} \bar{\psi}_{i}\right)-\frac{i}{2}\left(\partial_{\mu} \psi_{i}\right) \sigma^{\mu} \bar{\psi}_{i} \\
+            &-\sum_{i}\left|\frac{\partial W\left(\varphi_{i}\right)}{\partial \varphi_{i}}\right|^{2}-\frac{1}{2}\left(\frac{\partial^{2} W\left(\varphi_{i}\right)}{\partial \varphi_{i} \partial \varphi_{j}}\right) \psi_{i} \psi_{j}-\frac{1}{2}\left(\frac{\partial^{2} W^{\dagger}\left(\varphi_{i}\right)}{\partial \varphi_{i}^{*} \partial \varphi_{j}^{*}}\right) \bar{\psi}_{i} \bar{\psi}_{j}
+            \end{aligned}
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Wess-Zumino model}
+    \begin{equation*}
+        \begin{aligned}
+            \mathcal{L}_{\mathrm{Wz}} &=\left(\partial_{\mu} \varphi\right)\left(\partial^{\mu} \varphi\right)^{\dagger}+\frac{i}{2} \psi \sigma^{\mu}\left(\partial_{\mu} \bar{\psi}\right)-\frac{i}{2}\left(\partial_{\mu} \psi\right) \sigma^{\mu} \bar{\psi} \\
+            &-|M|^{2} \varphi \varphi^{\dagger}-\frac{|y|^{2}}{4} \varphi \varphi \varphi^{\dagger} \varphi^{\dagger}-\left(\frac{M}{2} \psi \psi+\frac{M \cdot y}{2} \varphi \varphi \varphi^{\dagger}+\frac{y}{2} \varphi \psi \psi+\text { h.c. }\right)
+            \end{aligned}
+    \end{equation*}
+    Let us give a look at the interactions
+        \begin{figure}
+            \centering
+            \includegraphics[scale=0.3]{feynman1.png}
+            \includegraphics[scale=0.3]{feynman2.png}
+        \end{figure}
+\end{frame}
+
+\begin{frame}
+    
 \end{frame}
     
 \begin{frame}{Abelian gauge theories}
