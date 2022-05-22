@@ -238,7 +238,7 @@ Equations of motion varying w.r.t. $\Phi_i$ and $\Phi_i^*$
 \end{frame}
     
 \begin{frame}{Abelian gauge theories}
-Let us introduce (abelian) gauge interactions. \\ 
+Let us now introduce (abelian) gauge interactions. \\ 
 Let us start with U(1) global symmetry 
 \begin{equation*}
     \Phi_i \rightarrow e^{iq_i\Lambda_i}\Phi_i
@@ -272,37 +272,42 @@ Promote to a local gauge symmetry
     \item We need $\Lambda(x, \theta, \bar\theta)$ to be a left-chiral superfield if we want $\Phi'$ to be a left-chiral superfield (chain rule). \\ 
     \item Thus this causes a problem in the kinetic term because $\Lambda^*$ is a right-chiral superfield
     hence obviously $\Phi'^*\Phi' \neq \Phi^*\Phi$
-    \item The problem is analogous to the kinetc term in "normal" when $\partial_u \phi^* \partial^\mu \phi$ was not gauge invariant
+    \item The problem is analogous to the kinetc term in "normal" QFT when $\partial_u \phi^* \partial^\mu \phi$ was not gauge invariant
     \item Solution: add a term that compensate the gauge for the non invariant terms
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Abelian gauge theories}
+Recall from the previous talk that a gauge transformation on a vector field $V$ reads
 \begin{equation*}
-    \Phi^+\Phi \rightarrow \Phi^* e^{-i\Lambda^*(x)} e^{i\Lambda(x)} \Phi
+    V \to V' = V + i(\Lambda^* - \Lambda)
 \end{equation*}
-$\Rightarrow$ need an object $A$ such that $A' = e^{i\Lambda*} A e^{-i\Lambda}$ and the 
-quantity $\Phi^*A\Phi*$ is then gauge invariant. \\
-Remember that a vector superfield $V$ transforms according to 
+one can modify the kinetic term to
 \begin{equation*}
-    V \rightarrow V' = V + i{\Lambda* - \Lambda}
+    \Phi^* e^V \Phi
 \end{equation*}
-\centerline{$\Rightarrow \qquad A = e^V$ is what we need.} \\
-Now we are just left with finding the gauge-invariant strength field term (euivalent of $F_{\mu\nu}F^{\mu\nu}$)
+so that it is invariant under the above gauge transformations
+\begin{equation*}
+    \Phi^*e^V\Phi \to \Phi '^*  e^{V'} \Phi ' = \Phi^*e^{-i\Lambda^*}e^{i\Lambda*}e^Ve^{-i\Lambda}e^{i\Lambda}\Phi = \Phi^*e^V\Phi
+\end{equation*}
+A particularly common gauge choice is the Wess-Zumino in which one ends with
+\begin{equation*}
+    V_{\mathrm{WZ}}(x, \theta, \bar{\theta})=\theta \sigma^{\mu} \bar{\theta} v_{\mu}(x)+i(\theta \theta) \bar{\theta} \bar{\lambda}(x)-i(\bar{\theta} \bar{\theta}) \theta \lambda(x)+\frac{1}{2}(\theta \theta)(\bar{\theta} \bar{\theta}) D(x)
+\end{equation*}
 \end{frame}
 
 
 \begin{frame}{Abelian gauge theories}
-Let us start by defining the two chiral fields \\
+Let us now define the two chiral fields \\
 \begin{equation*}
     \mathcal{W}_{\alpha}=-\frac{1}{4} \overline{D D} D_{\alpha} V, \quad \overline{\mathcal{W}}_{\dot{\alpha}} = -\frac{1}{4} D D \bar{D}_{\dot{\alpha}} V
 \end{equation*}
 where $V$ is a vector field. \\
 The gauge-invariant dynamical term (equivalent to $F_{\mu\nu} F^{\mu\nu}$) is 
 \begin{equation*}
-   [W]_F + [\bar W]_F = \int d^2\theta W_{\alpha} W^{\alpha} + \int d^2\bar\theta \bar W_{\dot\alpha} \bar W^{\dot\alpha}
+   [\mathcal{W}]_F + [\overline{\mathcal{W}}]_F = \int d^2\theta \ \mathcal{W}_{\alpha} \mathcal{W}^{\alpha} + \int d^2\bar\theta \ \overline{\mathcal{W}}_{\dot\alpha} \overline{\mathcal{W}}^{\dot\alpha}
 \end{equation*}
-The explicit derivation is quite long (it will be put in the report appendix) but we can make two checks to get more convinced
+The explicit derivation is quite long but we can make two checks to get more convinced
 \begin{itemize}
     \item Check that it is indeed gauge invariant
     \item Check that it contains the "normal" gauge strength field $F_{\mu\nu}F^{\mu\nu}$ after integrating out $\theta$ and $\bar\theta$
@@ -310,7 +315,8 @@ The explicit derivation is quite long (it will be put in the report appendix) bu
 \end{frame}
 
 \begin{frame}{Abelian gauge theories}
-To see that it is gauge invariant:
+To see that it is gauge invariant remember that under a $U(1)$ transformation $V \to V + i\left(\Omega^* - \Omega\right)$ and that 
+$D_\alpha \Omega = 0, \bar D^{\dot \alpha} \Omega = 0$
 \begin{equation*}
 \begin{aligned}
     \mathcal{W}_{\alpha} \rightarrow-\frac{1}{4} \overline{D D} D_{\alpha}\left[V+i\left(\Omega^{*}-\Omega\right)\right] &=\mathcal{W}_{\alpha}+\frac{i}{4} \overline{D D} D_{\alpha} \Omega \\
@@ -318,6 +324,10 @@ To see that it is gauge invariant:
     &=\mathcal{W}_{\alpha}+\frac{1}{2} \sigma_{\alpha \dot{\beta}}^{\mu} \partial_{\mu} \bar{D}^{\dot{\beta}} \Omega \\
     &=\mathcal{W}_{\alpha}
 \end{aligned}
+\end{equation*}
+where I also used that 
+\begin{equation*}
+    \left\{\bar{D}_{\bar\beta}, D_{\alpha}\right\}= - 2 i \sigma_{\alpha \dot{\beta}}^{\mu} \partial_{\mu},
 \end{equation*}
 \end{frame}
 
@@ -329,7 +339,7 @@ Remember that in the Wess-Zumino gauge the field expansion takes the form
 \end{gather*}
 Hence 
 \begin{equation*}
-    W = \dots
+    \mathcal{W}_{\alpha}\left(y, \theta, \theta^{\dagger}\right)=\lambda_{a}+\theta_{\alpha} D+\frac{i}{2}\left(\sigma^{\mu} \bar{\sigma}^{\nu} \theta\right)_{\alpha} F_{\mu \nu}+i \theta \theta\left(\sigma^{\mu} \partial_{\mu} \lambda^{\dagger}\right)_{\alpha}
 \end{equation*}
 Finally 
 \begin{equation*}
@@ -352,7 +362,7 @@ Remembering that up to now our lagrangian is
 once can note that the only other dependence on D is in $\left[\Phi^* e^V \Phi \right]_D = \Phi^*\Phi D$.
 Hence the equation of motions for $D$ are
 \begin{equation*}
-    0 = \frac{\partial \mathcal{L}}{\partial D} = D + \Phi* \Phi 
+    0 = \frac{\partial \mathcal{L}}{\partial D} = D + \Phi^* \Phi 
 \end{equation*}
 \end{frame}
 
@@ -386,11 +396,7 @@ $\Rightarrow$ how to extend to superspace?
 \end{frame}
 
 \begin{frame}{Non abelian gauge theories}
-Our starting point is again a term like 
-\begin{equation*}
-    \Phi^* e^A \Phi
-\end{equation*}
-$\rightarrow$ we need to figure out how to set $A$
+    
 \end{frame}
 
 \end{document}
