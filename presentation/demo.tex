@@ -6,6 +6,8 @@
 \usepackage[]{biblatex}
 \addbibresource{resources.bib}
 
+\definecolor{c1}{rgb}{1,0.93,0.8}
+
 
 \title{Building SUSY models II: using superfields}
 \subtitle{Seminar on Supersymmetry and its breaking}
@@ -60,15 +62,15 @@
     \item Principles to construct SUSY lagrangians 
     \item SUSY gauge theories: QED and QCD
     \item SUSY predictions: particles, interaction, masses, ...
-    \item N=1 nonrenormalization theorem
 \end{itemize}
 \end{frame}
 
 \begin{frame}{How to build SUSY invariant lagrangians}
     \begin{itemize}
-        \item We want our theory to be SUSY invariant, that is
-            \begin{equation*}
-                \left(\epsilon \hat Q + \epsilon^\dagger \hat Q^{\dagger}\right) S = \left(\epsilon \hat Q + \epsilon^\dagger \hat Q^{\dagger}\right) \int dx^\mu \mathcal{L} = 0
+        \item We want our theory to be SUSY invariant, that is if $S = \int dx^\mu \mathcal{L}$ is such that 
+            $\delta S = 0$, then 
+            \begin{equation*} 
+                \delta S' = \delta \left[\left(\epsilon \hat Q + \epsilon^\dagger \hat Q^{\dagger}\right) S \right] = 0
             \end{equation*}
         \item We know that this condition is met if, under a given transformation
             \begin{equation*}
@@ -118,9 +120,6 @@
 \begin{frame}{How to build SUSY invariant lagrangians}
 \begin{itemize}
     \item Idea $\rightarrow$ "select" the components of the fields that transforms as total derivatives
-    \begin{equation*} 
-        \mathcal{L}[\Phi, V] = \alpha \, \left[V\right]_D + \beta \, \left[\Phi\right]_F  + \gamma \, \left[\Phi^{\dagger}\right]_F
-    \end{equation*}
     \item How can we "pick" only the terms we need? $\rightarrow$ Grassman integration
     \begin{gather*}
         \int d^2\theta \quad \theta^n \, f(x, \bar\theta) \ = \ f(x, \bar\theta) \, \delta_{n, 2} \\
@@ -129,37 +128,37 @@
     \item Our terms of interest
     \begin{gather*}
         \left[\Phi\right]_F = \int d^2\theta \ \Phi(x, \theta, \bar\theta) = F + \text{total derivative} \\
-        \left[V\right]_D = \int d^2\theta d^2\bar\theta \ V(x, \theta, \bar\theta) = D + \text{total derivative}
+        \left[V\right]_D = \int d^2\theta d^2\bar\theta \ V(x, \theta, \bar\theta) = \frac{1}{2} \, D + \text{total derivative}
     \end{gather*}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{How to build SUSY invariant lagrangians}
-    Let us focus for a moment on the D term.\\
-    A vector field can be obtained from 2 chiral superfields by taking the product $\Phi^{\dagger}\Phi$
+    Let us focus for a moment on the D term.
     \begin{gather*}
         \Phi(x, \theta, \bar\theta) = \varphi(x) + i\bar\theta \bar\sigma^{\mu}\theta \partial_{\mu}\varphi(x) + \frac{1}{4}\theta\theta\bar\theta\bar\theta\partial_{\mu}\partial^{\mu}\varphi(x) + \sqrt{2}\theta\psi(x)\\ 
         -\frac{i}{\sqrt{2}}\theta\theta\bar\theta\bar\sigma^{\mu}\partial_{\mu}\psi(x) + \theta\theta F(x) \\
-        \Phi^{\dagger i} \Phi_{j}= \varphi^{* i} \varphi_{j}+\sqrt{2} \theta \psi_{j} \varphi^{* i}+\sqrt{2} \theta^{\dagger} \psi^{\dagger i} \varphi_{j}+\theta \theta \varphi^{* i} F_{j}+\theta^{\dagger} \theta^{\dagger} \varphi_{j} F^{\dagger i} \\
-            +\theta^{\dagger} \bar{\sigma}^{\mu} \theta\left[i \varphi^{\dagger i} \partial_{\mu} \varphi_{j}-i \varphi_{j} \partial_{\mu} \varphi^{* i}-\psi^{\dagger i} \sigma_{\mu} \psi_{j}\right] \\
-                +\frac{i}{\sqrt{2}} \theta \theta \theta^{\dagger} \bar{\sigma}^{\mu}\left(\psi_{j} \partial_{\mu} \varphi^{* i}-\partial_{\mu} \psi_{j} \varphi^{* i}\right)+\sqrt{2} \theta \theta \theta^{\dagger} \psi^{\dagger i} F_{j} \\
-                +\frac{i}{\sqrt{2}} \theta^{\dagger} \theta^{\dagger} \theta \sigma^{\mu}\left(\psi^{\dagger i} \partial_{\mu} \varphi_{j}-\partial_{\mu} \psi^{\dagger i} \varphi_{j}\right)+\sqrt{2} \theta^{\dagger} \theta^{\dagger} \theta \psi_{j} F^{* i} \\
-                +\theta \theta \theta^{\dagger} \theta^{\dagger}\left[F^{* i} F_{j}-\frac{1}{2} \partial^{\mu} \varphi^{* i} \partial_{\mu} \varphi_{j}+\frac{1}{4} \varphi^{* i} \partial^{\mu} \partial_{\mu} \varphi_{j}+\frac{1}{4} \varphi_{j} \partial^{\mu} \partial_{\mu} \varphi^{* i}\right. \\
+        \Phi^{\dagger i} \Phi_{j}= \varphi^{* i} \varphi_{j}+\sqrt{2} \theta \psi_{j} \varphi^{* i}+\sqrt{2} \bar\theta \psi^{\dagger i} \varphi_{j}+\theta \theta \varphi^{* i} F_{j}+\bar\theta \bar\theta \varphi_{j} F^{\dagger i} \\
+            +\bar\theta \bar{\sigma}^{\mu} \theta\left[i \varphi^{* i} \partial_{\mu} \varphi_{j}-i \varphi_{j} \partial_{\mu} \varphi^{* i}-\psi^{\dagger i} \sigma_{\mu} \psi_{j}\right] \\
+                +\frac{i}{\sqrt{2}} \theta \theta \bar\theta \bar{\sigma}^{\mu}\left(\psi_{j} \partial_{\mu} \varphi^{* i}-\partial_{\mu} \psi_{j} \varphi^{* i}\right)+\sqrt{2} \theta \theta \bar\theta \psi^{\dagger i} F_{j} \\
+                +\frac{i}{\sqrt{2}} \bar\theta \bar\theta \theta \sigma^{\mu}\left(\psi^{\dagger i} \partial_{\mu} \varphi_{j}-\partial_{\mu} \psi^{\dagger i} \varphi_{j}\right)+\sqrt{2} \bar\theta \bar\theta \theta \psi_{j} F^{* i} \\
+                +\theta \theta \bar\theta \bar\theta\left[F^{* i} F_{j}-\frac{1}{2} \partial^{\mu} \varphi^{* i} \partial_{\mu} \varphi_{j}+\frac{1}{4} \varphi^{* i} \partial^{\mu} \partial_{\mu} \varphi_{j}+\frac{1}{4} \varphi_{j} \partial^{\mu} \partial_{\mu} \varphi^{* i}\right. \\
                 \left.+\frac{i}{2} \psi^{\dagger i} \bar{\sigma}^{\mu} \partial_{\mu} \psi_{j}+\frac{i}{2} \psi_{j} \sigma^{\mu} \partial_{\mu} \psi^{\dagger i}\right]
     \end{gather*}
+    One can note that for $i=j$ one has that $(\Phi^{\dagger}\Phi)^{\dagger} = \Phi^{\dagger}\Phi \Rightarrow$ vector field!
 \end{frame}
 \begin{frame}{How to build SUSY invariant lagrangians}
     \begin{itemize}
         \item Now "select" the SUSY invariant component (D component)
         \begin{gather*}
             \left[\Phi^{\dagger}\Phi\right]_D = \int d^2\theta d^2\bar\theta \ \Phi^{\dagger}(x, \theta, \bar\theta) \Phi(x, \theta, \bar\theta) \\
-            \left[F^{*} F - \frac{1}{2} \partial^{\mu} \varphi^{* i} \partial_{\mu} \varphi_{j}+\frac{1}{4} \varphi^{* i} \partial^{\mu} \partial_{\mu} \varphi_{j}+\frac{1}{4} \varphi_{j} \partial^{\mu} \partial_{\mu} \varphi^{* i}\right. \\
-                    \left.+\frac{i}{2} \psi^{\dagger i} \bar{\sigma}^{\mu} \partial_{\mu} \psi_{j}+\frac{i}{2} \psi_{j} \sigma^{\mu} \partial_{\mu} \psi^{\dagger i}\right] = \\
-            = -\partial^{\mu}\varphi^{\dagger}\partial_{\mu}\varphi + i\psi^{\dagger}\bar\sigma^{\mu}\partial_{\mu}\psi + F^{*}F + \text{total derivative}
+            \left[F^{*} F - \frac{1}{2} \partial^{\mu} \varphi^{*} \partial_{\mu} \varphi+\frac{1}{4} \varphi^{*} \partial^{\mu} \partial_{\mu} \varphi+\frac{1}{4} \varphi \partial^{\mu} \partial_{\mu} \varphi^{*}\right. \\
+                    \left.+\frac{i}{2} \psi^{\dagger} \bar{\sigma}^{\mu} \partial_{\mu} \psi+\frac{i}{2} \psi \sigma^{\mu} \partial_{\mu} \psi^{\dagger}\right] = \\
+            = -\partial^{\mu}\varphi^*\partial_{\mu}\varphi + i\psi^{\dagger}\bar\sigma^{\mu}\partial_{\mu}\psi + F^{*}F + \text{total derivative}
         \end{gather*}
         \item Hence 
         \begin{equation*}
-            \boxed{S = \int dx^{\mu} \mathcal{L} = \int dx^{\mu} -\partial^{\mu}\varphi^{*}\partial_{\mu}\varphi + i\psi^{\dagger}\bar\sigma^{\mu}\partial_{\mu}\psi + F^{*}F}
+            \boxed{S = \int dx^{\mu} \mathcal{L} = \int dx^{\mu} \left( -\partial^{\mu}\varphi^{*}\partial_{\mu}\varphi + i\psi^{\dagger}\bar\sigma^{\mu}\partial_{\mu}\psi + F^{*}F \right)}
         \end{equation*}
         \centerline{\bfseries $\rightarrow$ Free Wess-Zumino model!}
     \end{itemize}
@@ -186,11 +185,16 @@ The interacting lagrangian becomes
 \begin{gather*}
 \mathcal{L}_{WZ}\left(\{\Phi_i\}, \{\Phi^{\dagger}_i\}\right) = \mathcal{L}_{WZ,D} + \mathcal{L}_{WZ,F} = \\
 = \left[\Phi^{\dagger i}\Phi^i\right]_D + \left[W(\{\Phi_i\})\right]_F +  \left[W^{\dagger}(\{\Phi^{\dagger}_i\})\right]_F = \\
-= \int d^2\theta \ \left(-\frac{1}{4}\overline{DD}\Phi^{\dagger i}\Phi_i + W(\{\Phi_i\})\right) + \int d^2\bar\theta \ W^{\dagger}(\{\Phi^{\dagger}_i\})
+= \int d^2\theta \ \left(-\frac{1}{4}\overline{DD}\Phi^{\dagger i}\Phi_i + W(\{\Phi_i\})\right) + \int d^2\bar\theta \ W^{\dagger}(\{\Phi^{\dagger}_i\}) = \\
+= \int d^2\bar\theta \ \left(-\frac{1}{4}{DD}\Phi^{\dagger i}\Phi_i + W(\{\Phi_i\})\right) + \int d^2\bar\theta \ W^{\dagger}(\{\Phi^{\dagger}_i\})
 \end{gather*}
+where I used that 
+\begin{equation*}
+    \int d^2\theta d^2\bar\theta \Phi^{\dagger}\Phi = - \int d^2\theta \, \frac{1}{4} \, \overline{DD}\Phi^\dagger\Phi = - \int d^2\bar\theta \, \frac{1}{4} \, DD(\Phi^{\dagger}\Phi) 
+\end{equation*}
 Equations of motion varying w.r.t. $\Phi_i$ and $\Phi_i^{\dagger}$
 \begin{gather*}
-    0=-\frac{1}{4} \overline{D D} \Phi^{\dagger i}+\frac{\delta W}{\delta \Phi_{i}} \\
+    0=-\frac{1}{4} \overline{D D} \Phi^{\dagger i}+\frac{\delta W}{\delta \Phi_{i}} \qquad
     0=-\frac{1}{4} D D \Phi_{i}+\frac{\delta W^{\dagger}}{\delta \Phi^{\dagger i}}
 \end{gather*}
 \end{frame}
@@ -205,7 +209,7 @@ Equations of motion varying w.r.t. $\Phi_i$ and $\Phi_i^{\dagger}$
         \item The lagrangian becomes
             \begin{gather*}
                 \mathcal{L}(\Phi, \Phi^{\dagger}) = \mathcal{L}_{WZ, D} + \mathcal{L}_{WZ, F} = \\ 
-                = F^{*} F+\left(\partial_{\mu} \varphi\right)\left(\partial^{\mu} \varphi\right)^{*}+\frac{i}{2} \psi \sigma^{\mu}\left(\partial_{\mu} \bar{\psi}\right)-\frac{i}{2}\left(\partial_{\mu} \psi\right) \sigma^{\mu} \bar\psi + \\
+                = F^{*} F+\left(\partial_{\mu} \varphi\right)\left(\partial^{\mu} \varphi\right)^{*}+\frac{i}{2} \psi \sigma^{\mu}\left(\partial_{\mu} \bar{\psi}\right)-\frac{i}{2}\left(\partial_{\mu} \psi\right) \sigma^{\mu} \psi^{\dagger} + \\
                     -m \varphi F-\frac{m}{2}(\psi \psi)-\frac{y}{2} \varphi \varphi F-\frac{y}{2} \varphi(\psi \psi)+\text { h.c. }
             \end{gather*}
         \item E.o.m. for $F$ (analogous for $F^{*}$) is
@@ -230,8 +234,8 @@ Equations of motion varying w.r.t. $\Phi_i$ and $\Phi_i^{\dagger}$
         \begin{equation*}
             \begin{aligned}
                 \mathcal{L}_{\mathrm{Wz}} &=\left(\partial_{\mu} \varphi\right)\left(\partial^{\mu} \varphi\right)^{\dagger}+\frac{i}{2} \psi \sigma^{\mu}\left(\partial_{\mu} \bar{\psi}\right)-\frac{i}{2}\left(\partial_{\mu} \psi\right) \sigma^{\mu} \bar{\psi} \\
-                &-|M|^{2} \varphi \varphi^{\dagger}-\frac{|y|^{2}}{4} \varphi \varphi \varphi^{\dagger} \varphi^{\dagger} \\
-                &- \left(\frac{M}{2} \psi \psi+\frac{M \cdot y}{2} \varphi \varphi \varphi^{\dagger}+\frac{y}{2} \varphi \psi \psi+\text { h.c. }\right)
+                &-|M|^{2} \varphi \varphi^*-\frac{|y|^{2}}{4} \varphi \varphi \varphi^* \varphi^* \\
+                &- \left(\frac{M}{2} \psi \psi+\frac{M \cdot y}{2} \varphi \varphi \varphi^*+\frac{y}{2} \varphi \psi \psi+\text { h.c. }\right)
                 \end{aligned}
         \end{equation*}
         
@@ -250,14 +254,14 @@ Equations of motion varying w.r.t. $\Phi_i$ and $\Phi_i^{\dagger}$
     \begin{equation*}
         \begin{aligned}
             \mathcal{L}_{\mathrm{Wz}} &=\left(\partial_{\mu} \varphi\right)\left(\partial^{\mu} \varphi\right)^{\dagger}+\frac{i}{2} \psi \sigma^{\mu}\left(\partial_{\mu} \bar{\psi}\right)-\frac{i}{2}\left(\partial_{\mu} \psi\right) \sigma^{\mu} \bar{\psi} \\
-            &-|M|^{2} \varphi \varphi^{\dagger}-\frac{|y|^{2}}{4} \varphi \varphi \varphi^{\dagger} \varphi^{\dagger}-\left(\frac{M}{2} \psi \psi+\frac{M \cdot y}{2} \varphi \varphi \varphi^{\dagger}+\frac{y}{2} \varphi \psi \psi+\text { h.c. }\right) \\
+            &-|M|^{2} \varphi \varphi^*-\frac{|y|^{2}}{4} \varphi \varphi \varphi^* \varphi^*-\left(\frac{M}{2} \psi \psi+\frac{M \cdot y}{2} \varphi \varphi \varphi^*+\frac{y}{2} \varphi \psi \psi+\text { h.c. }\right) \\
             &=\left(\partial_{\mu} \varphi\right)\left(\partial^{\mu} \varphi\right)^{*}+\frac{i}{2} \psi \sigma^{\mu}\left(\partial_{\mu} \bar{\psi}\right)-\frac{i}{2}\left(\partial_{\mu} \psi\right) \sigma^{\mu} \bar{\psi} \\
             &-\left|\frac{\partial W\left(\varphi\right)}{\partial \varphi}\right|^{2}-\frac{1}{2}\left(\frac{\partial^{2} W\left(\varphi\right)}{\partial \varphi \partial \varphi}\right) \psi \psi-\frac{1}{2}\left(\frac{\partial^{2} W^{*}\left(\varphi\right)}{\partial \varphi^{*} \partial \varphi^{*}}\right) \bar{\psi} \bar{\psi}
         \end{aligned}
     \end{equation*}
     where, I remember,
     \begin{equation*}
-        W(\Phi) = \frac{1}{2} \, \Phi\Phi + \frac{1}{3!} \, \Phi\Phi\Phi
+        W(\Phi) = \frac{1}{2} \, M \, \Phi\Phi + \frac{1}{3!} \, y \, \Phi\Phi\Phi
     \end{equation*}
 \end{frame}
 
@@ -276,9 +280,14 @@ Equations of motion varying w.r.t. $\Phi_i$ and $\Phi_i^{\dagger}$
         \end{figure}
 \end{frame}
 
-\begin{frame}{Wess Zumino model}
-    Superpotential never renormalised in perturbation theory \cite{Grisaru:1979wc} \\
-    Condition for SUSY not spontaneously broken
+\begin{frame}{Nonrenormalization theorem}
+    One can check straighforwardly that the quadratic divergence in the boson's mass is cancelled! \\
+    One can prove that in general the following theorem holds \\ 
+    \vspace{15pt}
+    \fbox{\begin{minipage}{0.8\textwidth}\emph{The superpotential is not renormalised at any order in perturbation theory. Thus it might get affected by nonperturbative effects such as instantons}\end{minipage}}
+    \\
+    \vspace*{15pt}
+    This is the so called \textbf{N=1 nonrenormalization theorem}
 \end{frame}
     
 \begin{frame}{Abelian gauge theories}
@@ -313,12 +322,11 @@ Promote to a local gauge symmetry
     \Lambda \to \Lambda(x, \theta, \bar\theta)
 \end{equation*}
 \begin{itemize}
-    \item Gauge parameter is now a supergauge field $\Lambda = \Lambda(x, \theta, \bar\theta)$
-    \item Promote derivatives to covariant derivatives $\partial_\mu \to D_\mu = \partial_\mu + ieA_{\mu}$
-    \item We need $\Lambda(x, \theta, \bar\theta)$ to be a left-chiral superfield if we want $\Phi'$ to be a left-chiral superfield (chain rule). \\ 
+    \item The gauge parameter is now a supergauge field $\Lambda = \Lambda(x, \theta, \bar\theta)$
+    \item We need $\Lambda(x, \theta, \bar\theta)$ to be a left-chiral superfield if we want $\Phi'$ to be a left-chiral superfield. \\ 
     \item Thus this causes a problem in the kinetic term because $\Lambda^{\dagger}$ is a right-chiral superfield
     hence obviously $\Phi'^{\dagger}\Phi' \neq \Phi^{\dagger}\Phi$
-    \item The problem is analogous to the kinetc term in "normal" QFT when $\partial_u \varphi^{\dagger} \partial^\mu \varphi$ was not gauge invariant
+    \item The problem is analogous to the kinetc term in "normal" QFT when $\partial_u \varphi^* \partial^\mu \varphi$ was not gauge invariant
     \item Solution: add a term that compensate the gauge for the non invariant terms
 \end{itemize}
 \end{frame}
@@ -351,7 +359,7 @@ Let us now define the two chiral fields \\
 where $V$ is a vector field. \\
 The gauge-invariant dynamical term (equivalent to $F_{\mu\nu} F^{\mu\nu}$) is 
 \begin{equation*}
-   [\mathcal{W}]_F + [\overline{\mathcal{W}}]_F = \int d^2\theta \ \mathcal{W}_{\alpha} \mathcal{W}^{\alpha} + \int d^2\bar\theta \ \overline{\mathcal{W}}_{\dot\alpha} \overline{\mathcal{W}}^{\dot\alpha}
+   [\mathcal{W}\mathcal{W}]_F + [\overline{\mathcal{W}\mathcal{W}}]_F = \int d^2\theta \ \mathcal{W}_{\alpha} \mathcal{W}^{\alpha} + \int d^2\bar\theta \ \overline{\mathcal{W}}_{\dot\alpha} \overline{\mathcal{W}}^{\dot\alpha}
 \end{equation*}
 The explicit derivation is quite long but we can make two checks to get more convinced
 \begin{itemize}
@@ -385,7 +393,7 @@ Remember that in the Wess-Zumino gauge the field expansion takes the form
 \end{gather*}
 Hence 
 \begin{equation*}
-    \mathcal{W}_{\alpha}\left(y, \theta, \theta^{\dagger}\right)=\lambda_{a}+\theta_{\alpha} D+\frac{i}{2}\left(\sigma^{\mu} \bar{\sigma}^{\nu} \theta\right)_{\alpha} F_{\mu \nu}+i \theta \theta\left(\sigma^{\mu} \partial_{\mu} \lambda^{\dagger}\right)_{\alpha}
+    \mathcal{W}_{\alpha}\left(y, \theta, \bar\theta\right)=\lambda_{a}+\theta_{\alpha} D+\frac{i}{2}\left(\sigma^{\mu} \bar{\sigma}^{\nu} \theta\right)_{\alpha} F_{\mu \nu}+i \theta \theta\left(\sigma^{\mu} \partial_{\mu} \lambda^{\dagger}\right)_{\alpha}
 \end{equation*}
 Finally 
 \begin{equation*}
@@ -415,12 +423,16 @@ Hence the equation of motions for $D$ are
 \begin{frame}{Abelian gauge theories}
 Putting all together we get the SUSY QED lagrangian 
 \begin{gather*}
-    \mathcal{L} = \dots
+    \mathcal{L} = \mathcal{L}=\left[\Phi^{* i} e^{2 g q_{i} V_{\Phi_{i}}}\right]_{D}+\left(\left[W\left(\Phi_{i}\right)\right]_{F}+\text { c.c. }\right)+\frac{1}{4}\left(\left[\mathcal{W}^{\alpha} \mathcal{W}_{\alpha}\right]_{F}+\text { c.c. }\right)
 \end{gather*}
 To this we add another SUSY and supergauge invariant term $2[kV]_D = 2kD$ (e.o.m. is still algebraic). 
 This term is called \emph{Fayet-Iliopoulos} and it will play an important role in the spontaneous SUSY breaking (next talks)
 \begin{equation*}
-    \boxed{\mathcal{L}_{SQED} = \dots}
+    \boxed{
+        \begin{gathered}
+        \mathcal{L}_{SQED} = \left[\Phi^{* i} e^{2 g q_{i} V_{\Phi_{i}}}\right]_{D}+\left(\left[W\left(\Phi_{i}\right)\right]_{F}+\text { c.c. }\right)+ \\ 
+        +\frac{1}{4}\left(\left[\mathcal{W}^{\alpha} \mathcal{W}_{\alpha}\right]_{F}+\text { c.c. }\right)-2 \kappa[V]_{D}
+        \end{gathered}}
 \end{equation*}
 \end{frame}
 
@@ -438,12 +450,99 @@ we \emph{define} our field strength tensor for a general gauge symmetry via
 \begin{equation*} 
     F_{\mu \nu} \equiv \frac{i}{g} \, [D_\mu, D_\nu] = \partial_\mu A_\nu - \partial_\nu A_\mu -ig \, [A_\mu, A_\nu]
 \end{equation*}
-$\Rightarrow$ how to extend to superspace?
+In superspace proceed analogously by "generalising" the definition
 \end{frame}
 
 \begin{frame}{Non abelian gauge theories}
-    provaa
+    We note that 
+    \begin{equation*} 
+        e^V \to e^{V + i(\Lambda^\dagger - \Lambda)}
+    \end{equation*}
+    Is a particular case of 
+    \begin{equation*}
+        e^V \to e^{i\Lambda^\dagger} e^V e^{-i\Lambda}
+    \end{equation*}
+    when the commutators vanish $[\Lambda^\dagger, V] = 0 = [\Lambda, V]$. \\
+    In fact
+    \begin{align*}
+        V \rightarrow V &+ i\left(\Omega^{\dagger}-\Omega\right)-\frac{i}{2}\left[V, \Omega+\Omega^{\dagger}\right] + \\ 
+        &+ i \sum_{k=1}^{\infty} \frac{B_{2 k}}{(2 k) !}\left[V,\left[V, \ldots\left[V, \Omega^{\dagger}-\Omega\right] \ldots\right]\right] = \\
+        = &+ i\left(\Omega^{a *}-\Omega^{a}\right)+g_{a} f^{a b c} V^{b}\left(\Omega^{c *}+\Omega^{c}\right) \\ 
+        &-\frac{i}{3} g_{a}^{2} f^{a b c} f^{c d^{b}} V^{b} V^{d}\left(\Omega^{c}-\Omega^{r}\right)+\ldots
+    \end{align*}
+    where $B_n$ defined by $\frac{x}{e^{x}-1}=\sum_{n=0}^{\infty} \frac{B_{n}}{n !} x^{n}$ are the Bernoulli numbers
 \end{frame}
+
+\begin{frame}{Non abelian gauge theories}
+We have to generalise also the kinetic term 
+\begin{equation*}
+    \mathcal{W}_{\alpha}=-\frac{1}{4} \overline{D D}\left(e^{-V} D_{\alpha} e^{V}\right)
+\end{equation*}
+so that it is invariant under 
+\begin{equation*}
+    \mathcal{W}_{\alpha} \rightarrow e^{i \Omega} \mathcal{W}_{\alpha} e^{-i \Omega}
+\end{equation*}
+The lagrangian then becomes 
+\begin{equation*}
+    \mathcal{L}=\frac{1}{4}\left[\mathcal{W}^{a x} W_{a}^{a}\right]_{F}+c . c .+\left[\Phi^{-i}\left(e^{2 g \cdot T^{\alpha} V^{a}}\right)_{i} \omega_{\Phi_{j}}\right]_{D}+\left(\left[W\left(\Psi_{i}\right)\right] F+c . c .\right) .
+\end{equation*}
+Let us write it in components in the case of SU(3) (QCD) after eliminating $D$ via e.o.m.
+\end{frame}
+
+\begin{frame}{NSQCD interactions}
+In case of QCD
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{L} &=\left(D_{\mu} \varphi_{i}\right)^{\dagger}\left(D^{\mu} \varphi\right)_{i}+\frac{i}{2} \psi_{i} \sigma^{\mu}\left(D_{\mu} \bar{\psi}\right)_{i}-\frac{i}{2}\left(D_{\mu} \psi\right)_{i} \sigma^{\mu} \bar{\psi}_{i}\\
+        &-\frac{1}{4} F_{\mu \nu}^{a}\left(F^{a}\right)^{\mu \nu}+\frac{i}{2} \lambda^{a} \sigma^{\mu}\left(D_{\mu} \bar{\lambda}\right)^{a}-\frac{i}{2}\left(D_{\mu} \lambda\right)^{a} \sigma^{\mu} \bar{\lambda}^{a} \\
+        &-\sqrt{2} i g \bar{\psi}_{i} \bar{\lambda}^{a} T_{i j}^{a} \varphi_{j}+\sqrt{2 i g} \varphi_{i}^{\dagger} T_{i j}^{a} \psi_{j} \lambda^{a} \\
+        &-\frac{1}{2} \frac{\partial^{2} W}{\partial \varphi_{i} \partial \varphi_{j}} \psi_{i} \psi_{j}-\frac{1}{2} \frac{\partial^{2} W^{\dagger}}{\partial \varphi_{i}^{\dagger} \partial \varphi_{j}^{\dagger}} \bar{\psi}_{i} \bar{\psi}_{j}-V\left(\varphi_{i}, \varphi_{j}^{\dagger}\right)
+        \end{aligned}
+\end{equation*}
+where 
+\begin{equation*}
+    V\left(\varphi_{i}, \varphi_{j}^{\dagger}\right)=F_{i}^{\dagger} F_{i}+\frac{1}{2}\left(D^{a}\right)^{2}=\sum_{i}\left|\frac{\partial W}{\partial \varphi_{i}}\right|^{2}+\frac{1}{2} \sum_{a}\left(g \varphi_{i}^{\dagger} T_{i j}^{a} \varphi_{j}+k^{a}\right)^{2}
+\end{equation*}
+\begin{equation*}
+    W\left(\varphi_{i}\right)=a_{i} \varphi_{i}+\frac{1}{2} m_{i j} \varphi_{i} \varphi_{j}+\frac{1}{3 !} y_{i j k} \varphi_{i} \varphi_{j} \varphi_{k}
+\end{equation*}
+\end{frame}
+
+\begin{frame}{SQCD interactions}
+    Where the gauge covariant derivatives are
+    \begin{equation*}\begin{aligned}
+        \left(D_{\mu} \varphi\right)_{i} &=\partial_{\mu} \varphi_{i}+i g v_{\mu}^{a} T_{i j}^{a} \varphi_{j} \\
+        \left(D_{\mu} \psi\right)_{i} &=\partial_{\mu} \psi_{i}+i g v_{\mu}^{a} T_{i j}^{a} \psi_{j} \\
+        \left(D_{\mu} \lambda\right)^{a} &=\partial_{\mu} \lambda^{a}-g f^{a b c} v_{\mu}^{b} \lambda^{c}
+        \end{aligned}
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{SQCD interactions}
+    This gives very cool interactions (diagrams from \cite{Signer_2009})
+    \begin{figure}
+        \centering 
+        \includegraphics[scale=0.35]{sqcd_inter_2.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{SQCD interactions}
+    \pagenumbering{gobble}
+    \begin{figure}
+        \centering 
+        \includegraphics[scale=0.35]{sqcd_inter_1.png}
+    \end{figure}
+\end{frame}
+
+
+{
+\setbeamercolor{background canvas}{bg=c1}
+\begin{frame}
+    \vfill
+    \centerline{Thank you for the attention}
+    \vfill
+\end{frame}
+}
 
 \begin{frame}
     \nocite{*}
