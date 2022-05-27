@@ -13,7 +13,7 @@
 \subtitle{Seminar on Supersymmetry and its breaking}
 \author{Matteo Zortea}
 \date{Universit\"at Heidelberg, $27^{th}$ May 2022}
-\institute{Coordinated by prof. J\"org J\"ackel}
+\institute{Coordinated by prof. Joerg Jaeckel}
 
 \makeatletter
 \setbeamertemplate{title page}{
@@ -64,22 +64,10 @@
     \item SUSY gauge theories: QED and QCD
     \item SUSY predictions: particles, superparticles, interactions, ...
 \end{itemize}
-\end{frame}
-
-\begin{frame}{How to build SUSY invariant lagrangians}
-    We search for lagrangians such that when we apply a supersymmetric transformation we get 
-        \begin{equation*}
-            \mathcal{L} \to \mathcal{L} + \partial_{\mu} f
-        \end{equation*}
-    This guarantees that if 
-    \begin{equation*}
-        S = \int dx^\mu \mathcal{L}
-    \end{equation*} 
-    is such that $\delta S = 0$, then
-    \begin{equation*}
-        \delta S' = \delta \int dx^{\mu} \mathcal{L} + \partial_\mu \mathcal{L} = \delta S + \int dx^\mu \, \partial_\mu \delta f = 0
-    \end{equation*}
-    and the transformation is a symmetry for our system
+$\rightarrow$ Search for a lagrangian that under a SUSY transformation
+\begin{equation*}
+    \mathcal{L} \to \mathcal{L} + \partial_\mu f
+\end{equation*}
 \end{frame}
 
 \begin{frame}{How to build SUSY invariant lagrangians}
@@ -150,7 +138,7 @@
     One can note that for $i=j$ one has that $(\Phi^{\dagger}\Phi)^{\dagger} = \Phi^{\dagger}\Phi \Rightarrow$ vector field!
 \end{frame}
 \begin{frame}{How to build SUSY invariant lagrangians}
-    \begin{itemize}
+    \begin{itemize}[<+->]
         \item Now "select" the SUSY invariant component (D component)
         \begin{gather*}
             \left[\Phi^{\dagger}\Phi\right]_D = \int d^2\theta d^2\bar\theta \ \Phi^{\dagger}(x, \theta, \bar\theta) \Phi(x, \theta, \bar\theta) \\
@@ -179,6 +167,7 @@
             \end{equation*}
         \item Higher order terms are non-renormalisable \\
         \item Reality of the action requires us to take $W + W^*$
+        \item $W$ is called \emph{superpotential}
     \end{itemize}
 \end{frame}
 
@@ -422,14 +411,14 @@ Hence the equation of motions for $D$ are
 \begin{frame}{Abelian gauge theories}
 Putting all together we get the SUSY QED lagrangian 
 \begin{gather*}
-    \mathcal{L}=\left[\Phi^{* i} e^{2 g q_{i} V}{\Phi_{i}}\right]_{D}+\left(\left[W\left(\Phi_{i}\right)\right]_{F}+\text { c.c. }\right)+\frac{1}{4}\left(\left[\mathcal{W}^{\alpha} \mathcal{W}_{\alpha}\right]_{F}+\text { c.c. }\right)
+    \mathcal{L}=\left[\Phi^{* i} e^{q_i V}{\Phi_{i}}\right]_{D}+\left(\left[W\left(\Phi_{i}\right)\right]_{F}+\text { c.c. }\right)+\frac{1}{4}\left(\left[\mathcal{W}^{\alpha} \mathcal{W}_{\alpha}\right]_{F}+\text { c.c. }\right)
 \end{gather*}
 To this we add another SUSY and supergauge invariant term $2[kV]_D = 2kD$ (e.o.m. is still algebraic). 
 This term is called \emph{Fayet-Iliopoulos} and it will play an important role in the spontaneous SUSY breaking (next talks)
 \begin{equation*}
     \boxed{
         \begin{gathered}
-        \mathcal{L}_{SQED} = \left[\Phi^{* i} e^{2 g q_{i} V} {\Phi_{i}}\right]_{D}+\left(\left[W\left(\Phi_{i}\right)\right]_{F}+\text { c.c. }\right)+ \\ 
+        \mathcal{L}_{SQED} = \left[\Phi^{* i} e^{q_{i} V} {\Phi_{i}}\right]_{D}+\left(\left[W\left(\Phi_{i}\right)\right]_{F}+\text { c.c. }\right)+ \\ 
         +\frac{1}{4}\left(\left[\mathcal{W}^{\alpha} \mathcal{W}_{\alpha}\right]_{F}+\text { c.c. }\right)-2 \kappa[V]_{D}
         \end{gathered}}
 \end{equation*}
@@ -485,7 +474,7 @@ The lagrangian then becomes
 \begin{equation*}
     \mathcal{L}=\frac{1}{4}\left[\mathcal{W}^{a \alpha} W_{\alpha}^{a}\right]_{F}+c . c .+\left[\Phi^{*i}\left(e^{2 g_a T^{a} V^{a}}\right)_{i}^j \Phi_{j}\right]_{D}+\left(\left[W\left(\Phi_{i}\right)\right]_F+c . c .\right) .
 \end{equation*}
-Let us write it in components in the case of SU(3) (QCD) after eliminating $D$ via e.o.m.
+Let us write it in components in the case of SU(3) (QCD) after eliminating $F,D$ via e.o.m.
 \end{frame}
 
 \begin{frame}{NSQCD interactions}
