@@ -59,9 +59,9 @@ Under a SUSY transformation the components transform as
 Here the term of our interest is the field $D$ because it transforms precisely as a total derivative, as desired. \\
 Hence a lagrangian of the type 
 \begin{equation*}
-  \mathcal{L} = \int dx^\mu \left[\Phi\right]_F + \left[\Phi^*\right]_F + \left[V\right]_D
+  \mathcal{L} = \int d^4x \left[\Phi\right]_F + \left[\Phi^\dagger\right]_F + \left[V\right]_D
 \end{equation*}
-where $\left[\Phi\right]_F$, $\left[\Phi^*\right]_F$ and $\left[V\right]_D$ denote respectively the F component of the chiral fields and the D component of a vector field, would certainly be SUSY invariant due to the transformation properties of the selected fields. 
+where $\left[\Phi\right]_F$, $\left[\Phi^\dagger\right]_F$ and $\left[V\right]_D$ denote respectively the F component of the chiral fields and the D component of a vector field, would certainly be SUSY invariant due to the transformation properties of the selected fields. 
 
 \newpage
 
@@ -70,6 +70,14 @@ Grassman integration provides a natural way to select such components. Indeed
   \int d^2\theta \, \Phi(x, \theta, \bar\theta) = \frac{1}{4} \, \bar\theta \bar\theta \partial_\mu \partial^\mu \phi(x) - \frac{i}{\sqrt{2}} \bar\theta \bar\sigma^\mu \partial_\mu \psi(x) + F(x) = F(x) + \text{total derivative} \equiv \left[\Phi\right]_F \\
   \int d^2\theta d^2\bar\theta \, V(x, \theta, \bar\theta) = \frac{1}{2} D + \frac{1}{4} \partial_\mu \partial^\mu a = \frac{1}{2} D + \text{total derivative} \equiv \left[V\right]_D
 \end{gather*}
+The first meaningful supersymmetric lagrangian can be obtained by noting that the product $\Phi^\dagger\Phi$ is real, hence a vector field. In particular, this implies that one can select the $D$ component $\left[\Phi^\dagger\Phi\right]_D$ via Grassman integration to obtain a SUSY invariant lagrangian. \\
+Let us write the product $\Phi^\dagger\Phi$ in components and let us in particulat look at the D term (i.e. the coefficient of $\theta\theta\bar\theta\bar\theta$, compare with expansion of $V$)
+\begin{gather*}
+  \Phi^\dagger\Phi = great mess \\
+  \boxed{\mathcal{L} = \int d^4 x \left[\Phi^\dagger\Phi\right]_D = \int d^4 x \left( -\partial^\mu \phi^* \partial_\mu \phi + i \psi^\dagger \bar\sigma^\mu \partial_\mu \phi + F^*F \right)} \\
+  \longrightarrow \text{\bfseries Free Wess-Zumino model}
+\end{gather*}
+
 
 
 \newpage
