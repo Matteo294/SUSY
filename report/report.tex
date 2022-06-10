@@ -1,0 +1,101 @@
+\documentclass[12pt]{article}
+\usepackage{packages}
+\usepackage[compat=1.1.0]{tikz-feynman}
+
+% !TeX program = lualatex
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\centerline{\Large\bfseries Building supersymmetric models using superfields}
+\vspace{5pt}
+\centerline{\large Seminar on Supersimmetry}
+\vspace{10pt}
+\centerline{University of Heidelberg, Summer Semester 2022}
+\vspace{5pt}
+\centerline{Matteo Zortea}
+\vspace{5pt}
+\centerline{Coordinated by prof. Joerg Jaeckel}
+
+\newpage
+Part on $\mathcal{L} \to \mathcal{L} + \partial_\mu f$ \\
+\raggedright The two main ingredients of a supersymmetric theory in the superspace formalism, are the chiral and vector superfields. Let us briefly recall some of their properties, useful for the subsequent reasonings. \\
+\vspace{15pt}
+A left-chiral superfield $\Phi$ (right-chiral superfield $\chi$) is obtained by imposing the constrain $\bar D_{\dot \alpha} \Phi(x, \theta, \bar\theta) = 0$  ($D_{\alpha} \chi(x, \theta, \bar\theta) = 0$), and a general expansion in powers of $\theta, \bar\theta$ reads
+\begin{equation}
+\begin{gathered}
+  \Phi(x, \theta, \bar\theta) = \varphi(x) + i\bar\theta \bar\sigma^{\mu}\theta \partial_{\mu}\varphi(x) + \frac{1}{4}\theta\theta\bar\theta\bar\theta\partial_{\mu}\partial^{\mu}\varphi(x) + \sqrt{2}\theta\psi(x) + \\ 
+                -\frac{i}{\sqrt{2}}\theta\theta\bar\theta\bar\sigma^{\mu}\partial_{\mu}\psi(x) + \theta\theta F(x)
+\end{gathered}
+\label{eq:leftchiral_expansion}
+\end{equation}
+The hermitian conjugate of a left-chiral superfield $\Phi^\dagger$ is a right-chiral superfield and vice-versa.
+The field $\phi$ entering equation \ref{eq:leftchiral_expansion} is the bosonic field of the theory, $\psi$ is its fermionic supersymmetric partner and $F$ will simply turn out to be unphysical. This will become clearer when looking at the interactions between the fields and at the equations of motion. \\
+Under a SUSY transformation the components transform as 
+\begin{gather*}
+  \delta_{\epsilon} \phi =\epsilon \psi \qquad\qquad
+  \delta_{\epsilon} \psi_{\alpha} =-i\left(\sigma^{\mu} \epsilon^{\dagger}\right)_{\alpha} \partial_{\mu} \phi+\epsilon_{\alpha} F, \qquad\qquad
+  \boxed{\delta_{\epsilon} F =-i \epsilon^{\dagger} \bar{\sigma}^{\mu} \partial_{\mu} \psi}
+\end{gather*}
+The transformation law of $F$ is of particular interest, since it is precisely a total derivative, that is what one looks for to build invariant lagrangians. \\
+\vspace{15pt}
+A vector superfield $V$ is obtained by imposing the reality condition $V=V^*$, and an expansion in powers of $\theta, \bar\theta$ reads
+\begin{gather*}
+  V\left(x, \theta, \bar\theta\right) = a+\theta \xi+\bar\theta \xi^{\dagger} +\theta \theta b+\bar\theta \bar\theta b^{\dagger}+\bar\theta \bar{\sigma}^{\mu} \theta A_{\mu}+ \\ 
+                + \bar\theta \bar\theta \theta\left(\lambda-\frac{i}{2} \sigma^{\mu} \partial_{\mu} \xi^{\dagger}\right)
+                +\theta \theta \bar\theta\left(\lambda^{\dagger}-\frac{i}{2} \sigma^{\mu} \partial_{\mu} \xi\right)+\theta \theta \bar\theta \bar\theta \left(\frac{1}{2} D+\frac{1}{4} \partial_{\mu} \partial^{\mu} a\right)
+\end{gather*}
+Here $A_\mu$ will be the spin-1 gauge field, with $\lambda$ beeing its fermionic supersymmetric partner. The field $D$ will dropout when looking at the equations of mottion, while all the others degrees of freedom can be supergagued away by going in the Wess-Zumino gauge. \\
+Under a SUSY transformation the components transform as 
+\begin{gather*}
+  \sqrt{2} \delta_{\epsilon} a =\epsilon \xi+\epsilon^{\dagger} \xi^{\dagger} \qquad 
+  \sqrt{2} \delta_{\epsilon} \lambda_{\alpha} =\epsilon_{a} D+\frac{i}{2}\left(\sigma^{\mu} \sigma^{\nu} \epsilon\right)_{\alpha}\left(\partial_{\mu} A_{\nu}-\partial_{\nu} A_{\mu}\right) \\
+  \sqrt{2} \delta_{\epsilon} b =\epsilon^{\dagger} \lambda^{\dagger}-i \epsilon^{\dagger} \sigma^{\mu} \partial_{\mu} \xi \qquad
+  \sqrt{2} \delta_{\epsilon} \xi_{\alpha} =2 \epsilon_{\alpha} b-\left(\sigma^{\mu} \epsilon^{\dagger}\right)_{\alpha}\left(A_{\mu}+i \partial_{\mu} a\right) \\
+  \sqrt{2} \delta_{\epsilon} A^{\mu} =i \epsilon \partial^{\mu} \xi-i \epsilon^{\dagger} \partial^{\mu} \xi^{\dagger}+\epsilon \sigma^{\mu} \lambda^{\dagger}-\epsilon^{\dagger} \bar{\sigma}^{\mu} \lambda \\
+  \boxed{\sqrt{2} \delta_{\epsilon} D =-i \epsilon \sigma^{\mu} \partial_{\mu} \lambda^{\dagger}-i \epsilon^{\dagger} \bar{\sigma}^{\mu} \partial_{\mu} \lambda}
+\end{gather*}
+Here the term of our interest is the field $D$ because it transforms precisely as a total derivative, as desired. \\
+Hence a lagrangian of the type 
+\begin{equation*}
+  \mathcal{L} = \int dx^\mu \left[\Phi\right]_F + \left[\Phi^*\right]_F + \left[V\right]_D
+\end{equation*}
+where $\left[\Phi\right]_F$, $\left[\Phi^*\right]_F$ and $\left[V\right]_D$ denote respectively the F component of the chiral fields and the D component of a vector field, would certainly be SUSY invariant due to the transformation properties of the selected fields. 
+
+\newpage
+
+Grassman integration provides a natural way to select such components. Indeed 
+\begin{gather*}
+  \int d^2\theta \, \Phi(x, \theta, \bar\theta) = \frac{1}{4} \, \bar\theta \bar\theta \partial_\mu \partial^\mu \phi(x) - \frac{i}{\sqrt{2}} \bar\theta \bar\sigma^\mu \partial_\mu \psi(x) + F(x) = F(x) + \text{total derivative} \equiv \left[\Phi\right]_F \\
+  \int d^2\theta d^2\bar\theta \, V(x, \theta, \bar\theta) = \frac{1}{2} D + \frac{1}{4} \partial_\mu \partial^\mu a = \frac{1}{2} D + \text{total derivative} \equiv \left[V\right]_D
+\end{gather*}
+
+
+\newpage
+
+\begin{figure}[h]
+  \centering 
+  \feynmandiagram [scale=2., layered layout, horizontal=a to c, inline=(a.base)] {
+  a -- [scalar, momentum={[arrow shorten=0.3]\(p\)}] b [dot],
+  b -- [scalar, momentum={[arrow shorten=0.3]\(p\)}] c,
+  b -- [out=135, in=45, loop, min distance=2cm, scalar, momentum={[arrow shorten=0.3]\(q\)}] b,
+}; 
+\quad + \qquad
+\feynmandiagram [scale=2., layered layout, horizontal=b to c, inline=(a.base)] {
+  a -- [scalar, momentum={[arrow shorten=0.3]\(p\)}] b [dot],
+  b -- [fermion, half left, looseness=1.5, edge label=\(q\)] c [dot],
+  b -- [fermion, half right, looseness=1.5, edge label=\(p-q\)] c,
+  c -- [scalar, momentum={[arrow shorten=0.3]\(p\)}] d,
+};
+\caption{1-loop corrections to the scalar propagator with the lagrangian give by equation ??????????????????}
+\end{figure}
+\raggedright The contribution from the first diagram is
+\begin{gather*}
+  -4 \,\frac{i|y|^2}{4} \, \int \frac{d^4 q}{(2\pi)^4} \, \frac{i}{q^2 - m^2}
+\end{gather*}
+The contribution from the second diagram is 
+\begin{equation*}
+  - 4 \, \left(\frac{iy}{2}\right)\left(\frac{iy^*}{2}\right) \int \frac{d^4 q}{(2\pi)^4} \, \text{Tr}\left[\frac{i\sigma \cdot q}{q^2 - m^2} \, \frac{i\bar\sigma \cdot (p-q)}{(p-q)^2 - m^2}\right]
+\end{equation*}
+\end{document}
