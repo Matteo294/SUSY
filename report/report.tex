@@ -100,10 +100,23 @@ Let us write the product $\Phi^\dagger\Phi$ in components and let us in particul
 \end{figure}
 \raggedright The contribution from the first diagram is
 \begin{gather*}
-  -4 \,\frac{i|y|^2}{4} \, \int \frac{d^4 q}{(2\pi)^4} \, \frac{i}{q^2 - m^2}
+  I_1 = 4 \,\frac{i|y|^2}{4} \, \int \frac{d^4 q}{(2\pi)^4} \, \frac{i}{q^2 - m^2} = - |y|^2 \, \int \frac{d^4 q}{(2\pi)^4} \, \frac{1}{q^2 - m^2}
+\end{gather*}
+By performing a Wick rotation $q \to iq$ and putting a cutoff $\Lambda$, the integral can be evaluated exactly in polar coordinates 
+\begin{gather*}
+  I_1 = \frac{i |y|^2}{(2\pi)^3} \, \int_0^\Lambda dq \int_0^\pi d\varphi_1 \int_0^{\pi} d\varphi_2 \, \frac{1}{q^2 + m^2} \, q^3 sin^2\varphi_1 sin\varphi_2 = \\
+  = \frac{i |y|^2}{8\pi^2} \int_{m}^{(\Lambda^2 + m^2)^{1/2}} \hspace{-3em} dt \qquad \frac{t^2 - m^2}{t} = \frac{i|y|^2}{16\pi^2} \, \left(\Lambda^2 - m^2 \ln\left(\frac{\Lambda^2 + m^2}{m^2}\right)\right)
 \end{gather*}
 The contribution from the second diagram is 
-\begin{equation*}
-  - 4 \, \left(\frac{iy}{2}\right)\left(\frac{iy^*}{2}\right) \int \frac{d^4 q}{(2\pi)^4} \, \text{Tr}\left[\frac{i\sigma \cdot q}{q^2 - m^2} \, \frac{i\bar\sigma \cdot (p-q)}{(p-q)^2 - m^2}\right]
-\end{equation*}
+\begin{gather*}
+  I_2 = - 2 \, \left(\frac{iy}{2}\right)\left(\frac{iy^*}{2}\right) \int \frac{d^4 q}{(2\pi)^4} \, \text{Tr}\left[\frac{i(\sigma \cdot q + m)}{q^2 - m^2} \, \frac{i(\bar\sigma \cdot (p-q) + m)}{(p-q)^2 - m^2}\right] = \\
+  - \frac{1}{2} |y|^2 \, \int \frac{d^4 q}{(2\pi)^4} \, (-2) \, \frac{q\cdot p - q^2 - 2m^2}{(q^2-m^2) ((q-p)^2-m^2)}
+\end{gather*}
+Where the property $\text{Tr}[\sigma_\mu \bar\sigma_\nu] = -2\eta_{\mu\nu}$ has been used. This integral is not easilly evaluable, but for the current purpose it is sufficient to determine its leading behaviour for $|q| \to +\infty$. \\
+After performing the Wick rotation and writing the integral in polar coordinates, the leading term is 
+\begin{gather*}
+  I_2 = \frac{|y|^2}{(2\pi)^3} \int_0^\Lambda dq \int_0^\pi d\varphi_1 \int_0^{\pi} d\varphi_2 \, \frac{1}{q^2} \, q^3\sin^2\varphi_1\sin\varphi_2 = \\ 
+  = \frac{i|y|^2}{(2\pi)^3} \, \pi \int_0^\Lambda dq \, q = \frac{i|y|^2}{16\pi^2} \, \Lambda^2
+\end{gather*}
+This term cancels precisely the quadratic term in ?????? as desired
 \end{document}
