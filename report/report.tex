@@ -6,12 +6,19 @@
 
 \begin{document}
 
-\pagenumbering{gobble}
-
 \centerline{\Large\bfseries Building supersymmetric models using superfields}
 \vspace{5pt}
 \centerline{\large Seminar on Supersimmetry}
-\vspace{10pt}
+
+\vspace{50pt}
+
+\begin{figure}[h]
+  \centering 
+  \includegraphics[scale=0.45]{images/uniheilogo.png}
+\end{figure}
+
+\vspace{50pt}
+
 \centerline{University of Heidelberg, Summer Semester 2022}
 \vspace{5pt}
 \centerline{Matteo Zortea}
@@ -59,9 +66,9 @@ Under a SUSY transformation the components transform as
 Here the term of our interest is the field $D$ because it transforms precisely as a total derivative, as desired. \\
 Hence a lagrangian of the type 
 \begin{equation*}
-  \mathcal{L} = \int d^4x \left[\Phi\right]_F + \left[\Phi^\dagger\right]_F + \left[V\right]_D
+  \mathcal{L} = \int d^4x \, F + F^* + D
 \end{equation*}
-where $\left[\Phi\right]_F$, $\left[\Phi^\dagger\right]_F$ and $\left[V\right]_D$ denote respectively the F component of the chiral fields and the D component of a vector field, would certainly be SUSY invariant due to the transformation properties of the selected fields. 
+would certainly be SUSY invariant due to the transformation properties of the selected fields. 
 
 \newpage
 
@@ -75,15 +82,93 @@ Let us write the product $\Phi^\dagger\Phi$ in components and let us in particul
 \begin{gather*}
   \Phi^\dagger\Phi = great mess \\
   \boxed{\mathcal{L} = \int d^4 x \left[\Phi^\dagger\Phi\right]_D = \int d^4 x \left( -\partial^\mu \phi^* \partial_\mu \phi + i \psi^\dagger \bar\sigma^\mu \partial_\mu \phi + F^*F \right)} \\
-  \longrightarrow \text{\bfseries Free Wess-Zumino model}
 \end{gather*}
+This is the lagrangian of the \emph{Free Wess-Zumino model}. \\
+We now want to proceed by adding interactions to this model. In order to do this one can observe that products of fields of the same chirality like $\Phi\Phi$, $\Phi^\dagger\Phi^\dagger$ are in turn chiral fields, since 
+$D_{\dot\alpha} \Phi\Phi = (D_{\dot\alpha} \Phi) \, \Phi + \Phi (D_{\dot\alpha} \Phi) = 0$ ($D_\alpha \Phi^\dagger\Phi^\dagger=0$ follows analogously). More in general any holomorphic function of fields of the same chirality is in turn a chiral field with the same chirality, as it can easililly be seen by expanding it in power series. \\
+Thus a function of the type
+\begin{equation}
+  W[\Phi] = a \, \Phi + \frac{1}{2!} \, m \, \Phi\Phi + \frac{1}{3!} \, y \Phi \Phi \Phi
+  \label{eq:superpotential}
+\end{equation}
+is certainly a left-chiral field, hence its $F$ component is SUSY invariant. We call $W[\Phi]$ the \emph{superpotential}. The lagrangian
+\begin{gather*}
+  \mathcal{L} = \left[\Phi^\dagger\Phi\right]_D + \left[W[\Phi]\right]_F + \left[W^\dagger[\Phi^\dagger]\right]_F = \\
+  = \int d^2\theta d^2\bar\theta \Phi^\dagger\Phi + \int d^2\theta \, W[\Phi] + \int d^2 \bar\theta \, W^\dagger[\Phi^\dagger] 
+\end{gather*}
+is thus supersymmetric invariant. By using the property $\overline{DD}(\theta\theta) = -\frac{1}{4} = DD(\bar\theta\bar\theta)$ one can rewrite the D term as an F term and the lagrangian becomes
+\begin{align*}
+  \mathcal{L} &= \int d^2\theta \, \left(-\frac{1}{4} \, \overline{DD}(\Phi^\dagger\Phi) + W[\Phi]\right) + \int d^2\bar\theta W^\dagger[\Phi^\dagger] \\
+  &= \int d^2\theta \, W[\Phi] + \int d^2\bar\theta \left(-\frac{1}{4} \, DD(\Phi^\dagger\Phi) + W^\dagger[\Phi^\dagger]\right)
+\end{align*}
+This allows to derive the equations of motions for the superfields straightforwardly
+\begin{equation*}
+  \overline{DD} \Phi^\dagger = 4\frac{\delta W}{\delta \Phi} \qquad\qquad  DD\Phi = 4\frac{\delta W^\dagger}{\delta \Phi^\dagger}
+\end{equation*}
+The superpotential in equation \ref{eq:superpotential} can be straightforwardly generalised to an arbitrary number of chiral superfields \
+\begin{equation*}
+  W[\Phi_i] = \sum_i a_i \, \Phi_i + \frac{1}{2!} \, m_{ij} \, \Phi_i\Phi_j + \frac{1}{3!} \, y_{ijk} \Phi_i \Phi_j \Phi_k
+\end{equation*}
+Note that in principle we are allowed to go to higher order in the power sum, but higher order terms would lead to a non renormalizable theory. To show this, let us do some dimensional analysis. \\
+From the superfield expansion \ref{eq:leftchiral_expansion} we note that the superfield and the bosonic field carry the same dimension $[\Phi] = [\varphi] = E^1$. If we want $\psi$ to be the fermionic 
+superpartner of $\phi$ then it must be a spinor with the usual dimension $[\psi] = E^{1/2} = [\psi^\dagger]$. This implies that it must be $[\theta] = E^{1/2} = [\bar\theta]$. As known, the lagrangian must have dimension $E^4$, hence so  
+it must be the dimension of $[W]_F = \int d^2\theta W[\Phi]$. Remembering that integrals in Grassman variables "act as derivatives", we conclude that the dimension of $W$ must be $E^3$. 
+Finally, by looking at \ref{eq:superpotential}, one has that $[a] = E^2, [m] = E^1, [y] = E^0$, confirming that higher order terms would be non renormalizable. A similar reasoning forbids forbids also terms like $(\Phi^\dagger\Phi)(\Phi^\dagger\Phi)$ which would require a coupling constant with negative mass dimension. \\
 
+\vspace{15pt}
+
+Let us now write down the lagrangian in terms of components of the fields $\Phi, \Phi^\dagger$
+\begin{gather*}
+  \mathcal{L} = \mathcal{L}_{WZ, D} + \mathcal{L}_{WZ, F} = \\ 
+  = F^{*} F+\left(\partial_{\mu} \varphi\right)\left(\partial^{\mu} \varphi\right)^{*}+\frac{i}{2} \psi \sigma^{\mu}\left(\partial_{\mu} \psi^{\dagger}\right)-\frac{i}{2}\left(\partial_{\mu} \psi\right) \sigma^{\mu} \psi^{\dagger} + \\
+      -m \varphi F-\frac{m}{2}(\psi \psi)-\frac{y}{2} \varphi \varphi F-\frac{y}{2} \varphi(\psi \psi)+\text { h.c. }
+\end{gather*}
+This allows us to derive the equations of motions for $F$ and $F^*$ straightforwardly 
+\begin{gather*}
+  F^{*} = m \varphi+\frac{y}{2} \varphi \varphi \\
+  F = m\varphi^* + \frac{y}{2}\varphi^*\varphi^* 
+\end{gather*}
+These are algebraic equation which allow one to express directly $F$ as a function of $\varphi, \varphi^*$. By inserting the expressions in the lagrangian one gets 
+\begin{equation}
+  \begin{aligned}
+      \mathcal{L}_{\mathrm{WZ}} &=\left(\partial_{\mu} \varphi\right)\left(\partial^{\mu} \varphi\right)^{*}+\frac{i}{2} \psi \sigma^{\mu}\left(\partial_{\mu} \psi^{\dagger}\right)-\frac{i}{2}\left(\partial_{\mu} \psi\right) \sigma^{\mu} \psi^{\dagger} \\
+      &-|M|^{2} \varphi \varphi^{*}-\frac{|y|^{2}}{4} \varphi \varphi \varphi^{*} \varphi^{*}-\left(\frac{M}{2} \psi \psi+\frac{M \cdot y}{2} \varphi \varphi \varphi^{*}+\frac{y}{2} \varphi \psi \psi+\text { h.c. }\right)
+      \end{aligned}
+      \label{eq:lagrangian_components}
+\end{equation}
+This expression allows one to study the interactions and draw Feynman diagrams. Before doing so, let us give a couple of comments 
+\begin{itemize}
+  \item In the last step we inserted the equations of motions in the lagrangian: this step should be taken with some care. In principle, the action can be evaluated for any configuration of the fields $\Phi(x, \theta, \bar\theta), \Phi^\dagger(x,\theta, bar\theta)$, with values of $F$ that can be completely unrelated to the values of $\varphi^*$. 
+  When we look at the equations of motions $\delta S = 0$ we are contraining the action to be a local extremum. Thus the lagrangian \ref{eq:lagrangian_components} is not a general one but rather one that extremizes the action, which would correspond to physical processes in the classical framework. One typically says that it is the "on shell" expression.
+  \item The lagrangian \ref{eq:lagrangian_components} can be also written in terms of a potential function of the bosonic field $\varphi, \varphi^*$ only
+  \begin{equation*}
+    V(\varphi) \equiv W(\varphi) = a \, \varphi + m \, \varphi^2 + y \, \varphi^3
+  \end{equation*}
+  namely the superpotential \ref{eq:superpotential} evaluated at the bosonic field $\varphi$. With this definition one can easilly check that
+  \begin{equation*}
+    F = -\left|\frac{\partial V}{\partial \varphi}\right|^2
+  \end{equation*}
+  and 
+  \begin{equation*}
+    \begin{aligned}
+        \mathcal{L}_{\mathrm{WZ}} &=\left(\partial_{\mu} \varphi\right)\left(\partial^{\mu} \varphi\right)^{*}+\frac{i}{2} \psi \sigma^{\mu}\left(\partial_{\mu} \psi^{\dagger}\right)-\frac{i}{2}\left(\partial_{\mu} \psi\right) \sigma^{\mu} \psi^{\dagger} \\
+        &-\left|\frac{\partial V\left(\varphi\right)}{\partial \varphi}\right|^{2}-\frac{1}{2}\left(\frac{\partial^{2} V\left(\varphi\right)}{\partial \varphi \partial \varphi}\right) \psi \psi-\frac{1}{2}\left(\frac{\partial^{2} V\left(\varphi^*\right)}{\partial \varphi^{*} \partial \varphi^{*}}\right) \psi^{\dagger} \psi^{\dagger}
+    \end{aligned}
+\end{equation*}
+\end{itemize}
+\begin{figure}
+  \centering 
+  \includegraphics[scale=0.3]{images/feynman1.png}
+  \includegraphics[scale=0.3]{images/feynman2.png}
+  \caption{Interactions in the Wess-Zumino model give by the lagrangian \ref{eq:lagrangian_components}}
+  \label{WZ_interactions}
+\end{figure}
 
 
 \newpage
 
 \begin{figure}[h]
-  \centering 
+  \centering
   \feynmandiagram [scale=2., layered layout, horizontal=a to c, inline=(a.base)] {
   a -- [scalar, momentum={[arrow shorten=0.3]\(p\)}] b [dot],
   b -- [scalar, momentum={[arrow shorten=0.3]\(p\)}] c,
@@ -115,8 +200,26 @@ The contribution from the second diagram is
 Where the property $\text{Tr}[\sigma_\mu \bar\sigma_\nu] = -2\eta_{\mu\nu}$ has been used. This integral is not easilly evaluable, but for the current purpose it is sufficient to determine its leading behaviour for $|q| \to +\infty$. \\
 After performing the Wick rotation and writing the integral in polar coordinates, the leading term is 
 \begin{gather*}
-  I_2 = \frac{|y|^2}{(2\pi)^3} \int_0^\Lambda dq \int_0^\pi d\varphi_1 \int_0^{\pi} d\varphi_2 \, \frac{1}{q^2} \, q^3\sin^2\varphi_1\sin\varphi_2 = \\ 
-  = \frac{i|y|^2}{(2\pi)^3} \, \pi \int_0^\Lambda dq \, q = \frac{i|y|^2}{16\pi^2} \, \Lambda^2
+  I_2 = - \frac{|y|^2}{(2\pi)^3} \int_0^\Lambda dq \int_0^\pi d\varphi_1 \int_0^{\pi} d\varphi_2 \, \frac{1}{q^2} \, q^3\sin^2\varphi_1\sin\varphi_2 = \\ 
+  = - \frac{i|y|^2}{(2\pi)^3} \, \pi \int_0^\Lambda dq \, q = - \frac{i|y|^2}{16\pi^2} \, \Lambda^2
 \end{gather*}
 This term cancels precisely the quadratic term in ?????? as desired
+
+\subsection*{Gauge theories}
+We now want to introduce gauge invariance in our theory. At first let us focus on the abelian U(1) group, which will then be generalised to an arbitrary gauge group. 
+Let us consider the Wess-Zumino lagrangian for an arbitrary number of superfields
+\begin{equation*}
+  \mathcal{L} = \int d^2\theta d^2\bar\theta \, \sum_i \Phi_i^\dagger \Phi_ii + \int d^2\theta \, \sum_i a_i \, \Phi_i + \sum_{ij} m_{ij} \, \Phi_i\Phi_j + \sum_{ijk} y_{ijk} \, \Phi_i\Phi_j\Phi_k + h.c.
+\end{equation*}
+Let us first consider 
+a global symmetry
+\begin{equation}
+  \Phi \to e^{iq_i \Lambda_i}\Phi \qquad \qquad \Phi^\dagger \to \Phi^\dagger e^{-iq_i \Lambda_i}
+  \label{eq:gaugetransf_phi}
+\end{equation}
+The kinetic term $\int d^2\theta d^2\bar\theta \sum_i \Phi_i^\dagger \Phi_i$ is always invariant but the potential term is not. In fact the linear term is obviously not invariant hence must be dropped. 
+Moreover, whenever $q_i + q_j \neq 0$ we must require $m_{ij} = 0$ and whenever $q_i + q_j + q_k \neq 0$ we must require $y_{ijk} = 0$. Note in particular that diagonal terms in the mass term require $q_i + q_i = 0$ in order to be present. \\
+We now promote the global symmetry to a local symmetry, hence $\Lambda \to \Lambda(x, \theta, \bar\theta)$. One can now note that the generator is not a normal function but rather a superfield. Note that it cannot be an arbitrary one. 
+In fact gauge symmetries are transformations which do not change the physical state of the system, but rather configurations that differs by a gauge transformation are physically equivalent. This in particular means that a chiral field must be mapped into fields of the same chirality. 
+By looking at equation \ref{eq:gaugetransfo_phi} we immediately conclude that $\Lambda(x, \theta, \bar\theta)$ must be a left-chiral superfield, which automatically guarantees that $\Lambda^\dagger(x, \theta, \bar\theta)$ is a right-chiral superfield.
 \end{document}
