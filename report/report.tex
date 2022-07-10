@@ -167,6 +167,8 @@ This expression allows one to study the interactions and draw Feynman diagrams. 
 
 \newpage
 
+\subsection*{Renormalization}
+
 \begin{figure}[h]
   \centering
   \feynmandiagram [scale=2., layered layout, horizontal=a to c, inline=(a.base)] {
@@ -182,29 +184,32 @@ This expression allows one to study the interactions and draw Feynman diagrams. 
   c -- [scalar, momentum={[arrow shorten=0.3]\(p\)}] d,
 };
 \caption{1-loop corrections to the scalar propagator with the lagrangian give by equation ??????????????????}
+\label{fig:scalar_mass_renormalization}
 \end{figure}
+
+In supersymmetry one often deals with precise cancellations of some diagrams due to the boson-fermion symmetry. As an example let us look at the scalar field's mass correction at one loop order. The two contributing diagrams are reported in figure \ref{fig:scalar_mass_renormalization}.
 \raggedright The contribution from the first diagram is
 \begin{gather*}
-  I_1 = 4 \,\frac{i|y|^2}{4} \, \int \frac{d^4 q}{(2\pi)^4} \, \frac{i}{q^2 - m^2} = - |y|^2 \, \int \frac{d^4 q}{(2\pi)^4} \, \frac{1}{q^2 - m^2}
-\end{gather*}
-By performing a Wick rotation $q \to iq$ and putting a cutoff $\Lambda$, the integral can be evaluated exactly in polar coordinates 
-\begin{gather*}
-  I_1 = \frac{i |y|^2}{(2\pi)^3} \, \int_0^\Lambda dq \int_0^\pi d\varphi_1 \int_0^{\pi} d\varphi_2 \, \frac{1}{q^2 + m^2} \, q^3 sin^2\varphi_1 sin\varphi_2 = \\
-  = \frac{i |y|^2}{8\pi^2} \int_{m}^{(\Lambda^2 + m^2)^{1/2}} \hspace{-3em} dt \qquad \frac{t^2 - m^2}{t} = \frac{i|y|^2}{16\pi^2} \, \left(\Lambda^2 - m^2 \ln\left(\frac{\Lambda^2 + m^2}{m^2}\right)\right)
+  I_1(p) = 4 \,\frac{i|y|^2}{4} \, \int \frac{d^4 q}{(2\pi)^4} \, \frac{i}{q^2 - m^2} = - |y|^2 \, \int \frac{d^4 q}{(2\pi)^4} \, \frac{1}{q^2 - m^2}
 \end{gather*}
 The contribution from the second diagram is 
 \begin{gather*}
-  I_2 = - 2 \, \left(\frac{iy}{2}\right)\left(\frac{iy^*}{2}\right) \int \frac{d^4 q}{(2\pi)^4} \, \text{Tr}\left[\frac{i(\sigma \cdot q + m)}{q^2 - m^2} \, \frac{i(\bar\sigma \cdot (p-q) + m)}{(p-q)^2 - m^2}\right] = \\
-  - \frac{1}{2} |y|^2 \, \int \frac{d^4 q}{(2\pi)^4} \, (-2) \, \frac{q\cdot p - q^2 - 2m^2}{(q^2-m^2) ((q-p)^2-m^2)}
+  I_2(p) = - 2 \, \left(\frac{iy}{2}\right)\left(\frac{iy^*}{2}\right) \int \frac{d^4 q}{(2\pi)^4} \, \text{Tr}\left[\frac{i(\sigma \cdot q + m)}{q^2 - m^2} \, \frac{i(\bar\sigma \cdot (p-q) + m)}{(p-q)^2 - m^2}\right] = \\
+  - \frac{1}{2} |y|^2 \, \int \frac{d^4 q}{(2\pi)^4} \, (2) \, \frac{q\cdot p - q^2 - 2m^2}{(q^2-m^2) ((q-p)^2-m^2)}
 \end{gather*}
-Where the property $\text{Tr}[\sigma_\mu \bar\sigma_\nu] = -2\eta_{\mu\nu}$ has been used. This integral is not easilly evaluable, but for the current purpose it is sufficient to determine its leading behaviour for $|q| \to +\infty$. \\
-After performing the Wick rotation and writing the integral in polar coordinates, the leading term is 
+where the property $\text{Tr}[\sigma_\mu \bar\sigma_\nu] = 2\eta_{\mu\nu}$ has been used. In order to calculate the mass renormalization, we have to evaluate the two expressions for zero incoming momentum. Hence
 \begin{gather*}
-  I_2 = - \frac{|y|^2}{(2\pi)^3} \int_0^\Lambda dq \int_0^\pi d\varphi_1 \int_0^{\pi} d\varphi_2 \, \frac{1}{q^2} \, q^3\sin^2\varphi_1\sin\varphi_2 = \\ 
-  = - \frac{i|y|^2}{(2\pi)^3} \, \pi \int_0^\Lambda dq \, q = - \frac{i|y|^2}{16\pi^2} \, \Lambda^2
+  I_1(0) + I_2(0) = |y|^2 \int \frac{d^4q}{(2\pi)^4} \, \frac{1}{q^2-m^2} - \frac{q^2 -m^2 + m^2 + 2m^2}{(q^2-m^2)^2} \\
+  |y|^2 \int \frac{d^4q}{(2\pi)^4} \, \cancel{\frac{1}{q^2-m^2}} - \cancel{\frac{1}{q^2-m^2}} - \frac{3m^2}{(q^2-m^2)^2}= \\ 
+  = -3m^2|y|^2 \int \frac{d^4q}{(2\pi)^4} \, \frac{1}{(q^2-m^2)^2}
 \end{gather*}
-This term cancels precisely the quadratic term in ?????? as desired
+The quadratically divergent term got cancelled in the second line and the result is now logarithmically divergent. \\
+A remarkable result which I state without proof is the so called \emph{N=1 nonrenormalization theorem}
+\begin{center}
+  The superpotential is never renormalised at any order in perturbation theory. Thus it might be renormalised by non-perturbative effects such as istantons.
+\end{center}
 
+\newpage 
 \subsection*{Gauge theories}
 We now want to introduce gauge invariance in our theory. At first let us focus on the abelian U(1) group, which will then be generalised to an arbitrary gauge group. 
 Let us consider the Wess-Zumino lagrangian for an arbitrary number of superfields
@@ -221,5 +226,105 @@ The kinetic term $\int d^2\theta d^2\bar\theta \sum_i \Phi_i^\dagger \Phi_i$ is 
 Moreover, whenever $q_i + q_j \neq 0$ we must require $m_{ij} = 0$ and whenever $q_i + q_j + q_k \neq 0$ we must require $y_{ijk} = 0$. Note in particular that diagonal terms in the mass term require $q_i + q_i = 0$ in order to be present. \\
 We now promote the global symmetry to a local symmetry, hence $\Lambda \to \Lambda(x, \theta, \bar\theta)$. One can now note that the generator is not a normal function but rather a superfield. Note that it cannot be an arbitrary one. 
 In fact gauge symmetries are transformations which do not change the physical state of the system, but rather configurations that differs by a gauge transformation are physically equivalent. This in particular means that a chiral field must be mapped into fields of the same chirality. 
-By looking at equation \ref{eq:gaugetransfo_phi} we immediately conclude that $\Lambda(x, \theta, \bar\theta)$ must be a left-chiral superfield, which automatically guarantees that $\Lambda^\dagger(x, \theta, \bar\theta)$ is a right-chiral superfield.
+By looking at equation \ref{eq:gaugetransfo_phi} we immediately conclude that $\Lambda(x, \theta, \bar\theta)$ must be a left-chiral superfield, hence $\Lambda^\dagger(x, \theta, \bar\theta)$ is a right-chiral superfield. \\
+This immediately brings a problem in the kinetic term because 
+\begin{equation*}
+\Phi^\dagger \Phi \to \Phi^\dagger \, e^{-iq\Lambda^\dagger(x,\theta,\bar\theta)} \, e^{iq\Lambda(x,\theta,\bar\theta)} \, \Phi \neq \Phi^\dagger \Phi
+\end{equation*}
+because due to the different chirality $\Lambda^\dagger \neq \Lambda $ unless they are both constant, which is the case of global symmetry. \\
+The problem is analogous to the one that one finds in the kinetic term in standard QFT when one tries to make a lagrangian gauge invariant, and it is solved by manually adding more terms. In the case of normal QFT one
+promotes the derivatives to gauge covariant derivatives, here we proceed by adding a factor $e^V$ between the two superfields, where $V=V(x,\theta,\bar\theta)$ is a vector field. To see why this fixes the problem recall that a gauge transformation for any vector superfield $V$ is
+\begin{equation*}
+  V \to V + iq\left(\Lambda^\dagger(x, \theta, \bar\theta) - \Lambda(x, \theta, \bar\theta)\right)
+\end{equation*}
+which is precisely what we need. \\
+Thus we must now specify a kinetic term for the gauge superfield $V(x, \theta, \bar\theta)$. This is accomplished by defining two chiral fields 
+\begin{equation*}
+  \mathcal{W_\alpha} \equiv -\frac{1}{4}\overline{DD}D_\alpha V \qquad \overline{\mathcal{W}}_{\dot\alpha} \equiv -\frac{1}{4}DD \overline{D}_{\dot\alpha} V
+\end{equation*}
+and building the two quantities
+\begin{equation*}
+  \mathcal{W}_{\alpha} \mathcal{W}^{\alpha} \equiv \mathcal{W}\mathcal{W} \qquad\qquad \overline{\mathcal{W}}_{\dot\alpha} \overline{\mathcal{W}}^{\dot\alpha} \equiv \overline{\mathcal{W}\mathcal{W}}
+\end{equation*}
+Remembering that product of superfields of the same chirality are in turn superfields of the same chirality and that the F term of a chirall field is supersymmetric invariant, the kinetic term becomes 
+\begin{equation*}
+  \left[\mathcal{W}\mathcal{W}\right]_F + \left[\overline{\mathcal{W}\mathcal{W}}\right]_F
+\end{equation*}
+The quantity is supersymmetric invariant by construction. One can make two further checks to verify that this is indeed a good choice for the kinetic term. One is gauge invariance which is straightforwardly proven using the anticommutation relation properties of the covariant derivatives $\left\{\bar{D}_{\bar\beta}, D_{\alpha}\right\}= - 2 i \sigma_{\alpha \dot{\beta}}^{\mu} \partial_{\mu}$
+\begin{equation*}
+  \begin{aligned}
+      \mathcal{W}_{\alpha} \quad\to\quad \mathcal{W_\alpha}' &= -\frac{1}{4} \overline{D D} D_{\alpha}\left[V+i\left(\Omega^{\dagger}-\Omega\right)\right] =\mathcal{W}_{\alpha}+\frac{i}{4} \overline{D D} D_{\alpha} \Omega \\
+      &=\mathcal{W}_{\alpha}-\frac{i}{4} \bar{D}^{\dot{\beta}}\left\{\bar{D}_{\dot{\beta}}, D_{\alpha}\right\} \Omega 
+      =\mathcal{W}_{\alpha}+\frac{1}{2} \sigma_{\alpha \dot{\beta}}^{\mu} \partial_{\mu} \bar{D}^{\dot{\beta}} \Omega
+      =\mathcal{W}_{\alpha}
+  \end{aligned}
+\end{equation*}
+The second is to see that it at least contains the gauge spin-1 boson kinetic term. This can be done by expressing $V(x, \theta, \bar\theta)$ in compontents in the Wess-Zumino gauge and after a quite tedious but straighforward calculation one can show that 
+\begin{equation*}
+  \frac{1}{4} \, \left[\mathcal{W}\mathcal{W}\right]_F + \frac{1}{4} \left[\overline{\mathcal{W}\mathcal{W}}\right]_F = -\frac{1}{4} F_{\mu\nu}F^{\mu\nu} + i \lambda^\dagger \bar\sigma^\mu \partial_\mu \lambda + \frac{1}{2} \, D^2
+\end{equation*}
+Note that together with the usual gauge spin-1 boson kinetic term we also get a kinetic term for the spinor $\lambda$. This the fermionic superpartner of the gauge boson, the \emph{gaugino}. In the case of $U(1)$ symmetry the two superpartners are the photon and the photino.
+The D term will dropout when looking at the euqation of motions. \\
+In the end our abelian gauge invariant supersymmetric lagrangian is 
+\begin{equation*}
+  \mathcal{L} = \frac{1}{4} \, \left[\mathcal{W}\mathcal{W}\right]_F + \frac{1}{4} \left[\overline{\mathcal{W}\mathcal{W}}\right]_F + \left[\Phi^\dagger e^V \Phi\right]_D + [W(\Phi)]_F + [\overline{W} (\Phi^\dagger)]_F
+\end{equation*}
+The equations of motions for D are very straighforward since D is contained only in the kinetic terms through V. Noting that $[\Phi^\dagger e^V \Phi]_D = \Phi^\dagger \Phi D$ one has the equations of motions 
+\begin{equation*}
+  0 = \frac{d\mathcal{L}}{dD} = D + \Phi^\dagger \Phi
+\end{equation*}
+\par
+\vspace{15pt}
+The generalization to non-abelian gauge groups is conceptually straightforward, even though calculations become more complicated. Let us consider a gauge group $\mathcal{G}$ and its Lie algebra $Lie(\mathcal{G})$ with generators $\left\{T^a\right\}$.
+Any element $A_\mu$ in the algebra can be written in the fundamental representation as $A_\mu = \sum_a A_\mu^a \, T^a$. The problem is that now the kinetic term in the lagrangian transforms as 
+\begin{equation*}
+  \Phi^\dagger e^V \Phi \to \Phi^\dagger e^{-iq\Lambda} e^{V + iq(\Lambda^\dagger - \Lambda)} e^{iq\Lambda}
+\end{equation*}
+which is not $\Phi^\dagger e^V \Phi$ because now the exponents have to be combined using the Baker-Campbell-Hausddorf formula. The problem can be fixed by redefining the transformation properties of the vector superfield as 
+\begin{equation*}
+  e^V \to e^{i\Lambda^\dagger} e^V e^{-i\Lambda}
+\end{equation*}
+which implies 
+\begin{align*}
+  V \rightarrow &V + i\left(\Omega^{\dagger}-\Omega\right)-\frac{i}{2}\left[V, \Omega+\Omega^{\dagger}\right] 
+  + i \sum_{k=1}^{\infty} \frac{B_{2 k}}{(2 k) !}\left[V,\left[V, \ldots\left[V, \Omega^{\dagger}-\Omega\right] \ldots\right]\right] = \\
+  = & V + i\left(\Omega^{a *}-\Omega^{a}\right)+g_{a} f^{a b c} V^{b}\left(\Omega^{c *}+\Omega^{c}\right) 
+  -\frac{i}{3} g_{a}^{2} f^{a b c} f^{c d^{b}} V^{b} V^{d}\left(\Omega^{c}-\Omega^{r}\right)+\ldots
+\end{align*}
+where $B_n$ defined by $\frac{x}{e^{x}-1}=\sum_{n=0}^{\infty} \frac{B_{n}}{n !} x^{n}$ are the Bernoulli numbers. Note that this definition trivially reduces to the old one in the abelian case ($f^{abc}=0$). \\
+The kinetic term of the gauge fields must also be redefined to take account of the new transform law of $V$ and we write it as 
+\begin{equation*}
+  \mathcal{W}_\alpha = -\frac{1}{4} \overline{DD} (e^{-V}D_{\alpha}e^V)
+\end{equation*}
+and the final lagrangian is 
+\begin{equation*}
+  \mathcal{L}=\frac{1}{4}\left[\mathcal{W}^{a \alpha} W_{\alpha}^{a}\right]_{F}+c . c .+\left[\Phi^{*i}\left(e^{2 g_a T^{a} V^{a}}\right)_{i}^j \Phi_{j}\right]_{D}+\left(\left[W\left(\Phi_{i}\right)\right]_F+c . c .\right) .
+\end{equation*}
+As an example let us write down the lagrangian in components for supersymmetric QCD and let us study it qualitatively
+\begin{equation*}
+  \begin{aligned}
+      \mathcal{L} &=\left(D_{\mu} \varphi_{i}\right)^{*}\left(D^{\mu} \varphi\right)_{i}+\frac{i}{2} \psi_{i} \sigma^{\mu}\left(D_{\mu} \psi^{\dagger}\right)_{i}-\frac{i}{2}\left(D_{\mu} \psi\right)_{i} \sigma^{\mu} \psi^{\dagger}_{i}\\
+      &-\frac{1}{4} F_{\mu \nu}^{a}\left(F^{a}\right)^{\mu \nu}+\frac{i}{2} \lambda^{a} \sigma^{\mu}\left(D_{\mu} \bar{\lambda}\right)^{a}-\frac{i}{2}\left(D_{\mu} \lambda\right)^{a} \sigma^{\mu} \bar{\lambda}^{a} \\
+      &-\sqrt{2} i g \psi^{\dagger}_{i} \bar{\lambda}^{a} T_{i j}^{a} \varphi_{j}+\sqrt{2 i g} \varphi_{i}^{\dagger} T_{i j}^{a} \psi_{j} \lambda^{a} \\
+      &-\frac{1}{2} \frac{\partial^{2} W}{\partial \varphi_{i} \partial \varphi_{j}} \psi_{i} \psi_{j}-\frac{1}{2} \frac{\partial^{2} W^{\dagger}}{\partial \varphi_{i}^{*} \partial \varphi_{j}^{*}} \psi^{\dagger}_{i} \psi^{\dagger}_{j}-V\left(\varphi_{i}, \varphi_{j}^{*}\right)
+      \end{aligned}
+\end{equation*}
+where 
+\begin{equation*}
+    V\left(\varphi_{i}, \varphi_{j}^{*}\right)=F_{i}^{*} F_{i}+\frac{1}{2}\left(D^{a}\right)^{2}=\sum_{i}\left|\frac{\partial W}{\partial \varphi_{i}}\right|^{2}+\frac{1}{2} \sum_{a}\left(g \varphi_{i}^{*} T_{i j}^{a} \varphi_{j}+k^{a}\right)^{2}
+\end{equation*}
+\begin{equation*}
+    W\left(\varphi_{i}\right)=a_{i} \varphi_{i}+\frac{1}{2} m_{i j} \varphi_{i} \varphi_{j}+\frac{1}{3 !} y_{i j k} \varphi_{i} \varphi_{j} \varphi_{k}
+\end{equation*}
+In the first line one can note the kinetic term for the quarks and the bosonic superpartners, the squarks. In the secon line there are the kinetic terms for the gluons and gluinos, in the third and fourth lines all the interactions. A peculiar and remarkable result is that the generators $T^a_{ij}$ play directly 
+a role in the coupling constants. The resulting Feynman diagrams are reported below.
+\begin{figure}[h]
+  \centering 
+  \includegraphics[scale=0.35]{sqcd_inter_2.png}
+\end{figure}
+\begin{figure}[h]
+  \centering 
+  \includegraphics[scale=0.35]{sqcd_inter_1.png}
+\end{figure}
+
 \end{document}
